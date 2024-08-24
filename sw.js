@@ -12,19 +12,6 @@ self.addEventListener('install', (event) => {
     );
 });
 
-// CACHE_NAME이 변경되면 오래된 캐시 삭제
-self.addEventListener("activate", (event) => {
-    event.waitUntil(
-        caches.keys().then((keyList) =>
-            Promise.all(
-                keyList.map((key) => {
-                    if (CACHE_NAME !== key) return caches.delete(key);
-                })
-            )
-        )
-    );
-});
-
 
 self.addEventListener("fetch", (event) => {
     // Regular requests not related to Web Share Target.
