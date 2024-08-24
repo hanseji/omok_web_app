@@ -1,6 +1,6 @@
 {
     "name": "오목눈이",
-    "start_url": "/",
+    "start_url": "/?source=pwa",
     "display": "fullscreen",
     "share_target": {
       "action": "/",
