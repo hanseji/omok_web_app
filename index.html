@@ -18,17 +18,20 @@
 
 	// Function to handle the shared data
 	function handleSharedData() {
-            const params = new URLSearchParams(window.location.search);
-            //const title = params.get('name');
-            //const description = params.get('description');
-            const link = params.get('link');
+			const parsedUrl = new URL(window.location);
+            const title = parsedUrl.searchParams.get('title');
+            const text = parsedUrl.searchParams.get('text');
+            const url = parsedUrl.searchParams.get('url');
 
-            if (link) {
-                document.getElementById('message').innerText = `Received YouTube link: ${link}`;
+            if (text) {
+                document.getElementById('message').innerText = `Received YouTube link: ${text}`;
             }
         }
 
-    handleSharedData();
+	window.addEventListener('DOMContentLoaded', () => {
+		handleSharedData();
+	});
+
 </script>
 </body>
 </html>
