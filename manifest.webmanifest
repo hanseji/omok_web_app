@@ -2,6 +2,16 @@
     "name": "오목눈이",
     "start_url": "/",
     "display": "fullscreen",
+    "share_target": {
+      "action": "/receive",
+      "method": "POST",
+      "enctype": "multipart/form-data",
+      "params": {
+        "title": "name",
+        "text": "description",
+        "url": "link"
+      }
+    },
     "icons": [
       {
         "src": "/images/icon-192.png",
