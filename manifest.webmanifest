@@ -4,7 +4,7 @@
   "start_url": "/",
   "display": "fullscreen",
   "share_target": {
-    "action": "/",
+    "action": "/share",
     "method": "GET",
     "params": {
       "title": "title",
