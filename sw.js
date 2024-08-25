@@ -14,10 +14,8 @@ self.addEventListener('install', (event) => {
 });
 
 
-self.addEventListener("fetch", async (event) => {
-    const url = await new URL(event.request.url);
-
-    console.log(url)
+self.addEventListener("fetch", (event) => {
+    const url = new URL(event.request.url);
 
     if (url.pathname === '/share') {
         // 공유된 데이터 처리
