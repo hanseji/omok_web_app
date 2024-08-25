@@ -16,6 +16,8 @@ self.addEventListener('install', (event) => {
 self.addEventListener("fetch", (event) => {
     const url = new URL(event.request.url);
 
+    console.log(url)
+
     if (url.pathname === '/share') {
         // 공유된 데이터 처리
         event.respondWith(handleShare(event.request));
