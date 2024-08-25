@@ -43,7 +43,7 @@ function handleShare(request) {
     const sharedUrl = params.get('url'); // 공유된 URL
 
     // 유튜브 링크인지 확인
-    if (new URL(text).host === 'www.youtube.com') {
+    if (text.includes('youtube.com') || text.includes('youtu.be')) {
         // 알림 보내기
         self.registration.showNotification('유튜브 링크 공유됨', {
             body: `유튜브에서 새 비디오 링크가 공유되었습니다: ${text}`,
