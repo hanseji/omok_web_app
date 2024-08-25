@@ -16,7 +16,7 @@ function handleSharedData() {
 }
 
 function askForNPerm() {
-    Notification.requestPermission(function(result) {
+    Notification.requestPermission().then(function(result) {
         console.log("User choice", result);
         if (result == "granted") {
             console.log("권한 허용됨");
