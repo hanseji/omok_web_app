@@ -14,8 +14,8 @@ self.addEventListener('install', (event) => {
 });
 
 
-self.addEventListener("fetch", (event) => {
-    const url = new URL(event.request.url);
+self.addEventListener("fetch", async (event) => {
+    const url = await new URL(event.request.url);
 
     console.log(url)
 
@@ -51,4 +51,5 @@ function handleShare(request) {
 
     // 공유 처리 후 사용자를 환영 페이지로 리디렉션
     //return Response.redirect('/welcome.html', 303);
+    return new Response(null, { status: 204, statusText: 'No Content' });
 }
