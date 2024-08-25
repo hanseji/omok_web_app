@@ -10,28 +10,7 @@
 <body>
     <h1>Share Target API Example</h1>
     <p id="message">Share a YouTube link to this PWA!</p>
-
-<script>
-	if ('serviceWorker' in navigator) {
-		navigator.serviceWorker.register('/sw.js');
-	}
-
-	// Function to handle the shared data
-	function handleSharedData() {
-			const parsedUrl = new URL(window.location);
-            const title = parsedUrl.searchParams.get('title');
-            const text = parsedUrl.searchParams.get('text');
-            const url = parsedUrl.searchParams.get('url');
-
-            if (text) {
-                document.getElementById('message').innerText = `Received YouTube link: ${text}`;
-            }
-        }
-
-	window.addEventListener('DOMContentLoaded', () => {
-		handleSharedData();
-	});
-
+	<script src="app.js"></script>
 </script>
 </body>
 </html>
