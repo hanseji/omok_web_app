@@ -53,5 +53,5 @@ function handleShare(request) {
 
     // 공유 처리 후 사용자를 환영 페이지로 리디렉션
     //return Response.redirect('/welcome.html', 303);
-    return new Response(null, { status: 204, statusText: 'No Content' });
+    return Response.redirect('/self-closing-page.html', 303);
 }
