@@ -29,5 +29,5 @@ function askForNPerm() {
 
 window.addEventListener('DOMContentLoaded', () => {
     askForNPerm()
-    //handleSharedData();
+    handleSharedData();
 });
