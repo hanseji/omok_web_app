@@ -19,7 +19,15 @@ self.addEventListener("fetch", (event) => {
 
     if (url.pathname === '/share') {
         // 공유된 데이터 처리
-        event.respondWith(handleShare(event.request));
+        Notification.requestPermission(function(result) {
+            console.log("User choice", result);
+            if (result == "granted") {
+                event.respondWith(handleShare(event.request));
+            } else {
+                // 공유 처리 후 사용자를 환영 페이지로 리디렉션
+                return Response.redirect('/index.html', 303);
+            }
+        });
     } else {
         // Regular requests not related to Web Share Target.
         event.respondWith(

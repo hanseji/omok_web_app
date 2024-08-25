@@ -18,13 +18,14 @@ function handleSharedData() {
 function askForNPerm() {
     Notification.requestPermission(function(result) {
         console.log("User choice", result);
-        if (result !== "granted") {
-        console.log("No notification permission granted!");
+        if (result == "granted") {
+            console.log("권한 허용됨");
+            //configurePushSub();// Write your custom function that pushes your message
         } else {
-        configurePushSub();// Write your custom function that pushes your message
+            console.log("No notification permission granted!");
         }
     });
-    }
+}
 
 window.addEventListener('DOMContentLoaded', () => {
     askForNPerm()
