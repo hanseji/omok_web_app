@@ -20,7 +20,8 @@ self.addEventListener("fetch", (event) => {
     if (url.pathname === '/share') {
         // 공유된 데이터 처리
         if (Notification && Notification.permission === "granted") {
-            event.respondWith(handleShare(event.request));
+            return Response.redirect('/self-closing-page.html', 303);
+            //event.respondWith(handleShare(event.request));
         } else {
             return Response.redirect('/index.html', 303);
         }
