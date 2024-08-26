@@ -1,28 +1,38 @@
 let deferredPrompt;
+const installPrompt = document.getElementById('installPrompt');
+const installButton = document.getElementById('installButton');
+const installMessage = document.getElementById('installMessage');
 
 window.addEventListener('beforeinstallprompt', (e) => {
-    // 설치 프롬프트를 보여주기 전에 발생하는 이벤트를 차단
+    // Prevent the mini-infobar from appearing on mobile
     e.preventDefault();
+    // Stash the event so it can be triggered later.
     deferredPrompt = e;
-
-    // 설치 버튼 보여주기
-    const installButton = document.getElementById('installBtn');
-    installButton.style.display = 'block';
-
-    installButton.addEventListener('click', (e) => {
-        // 버튼 클릭 시 설치 프롬프트 보여주기
-        deferredPrompt.prompt();
-        // 사용자가 설치를 결정했는지 확인
-        deferredPrompt.userChoice.then((choiceResult) => {
-            if (choiceResult.outcome === 'accepted') {
-                console.log('User accepted the A2HS prompt');
-            } else {
-                console.log('User dismissed the A2HS prompt');
-            }
-            deferredPrompt = null;
-        });
-    });
+    // Only show the install button for Android devices
+    if (!isIos()) {
+        installButton.style.display = 'block';
+        installMessage.textContent = "Install this app on your home screen for quick and easy access.";
+        installPrompt.style.display = 'block';
+    }
 });
+
+installButton.addEventListener('click', async () => {
+    // Show the install prompt
+    deferredPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+        console.log('User accepted the A2HS prompt');
+    } else {
+        console.log('User dismissed the A2HS prompt');
+    }
+    deferredPrompt = null;
+    installButton.style.display = 'none';
+});
+
+function closePrompt() {
+    installPrompt.style.display = 'none';
+}
 
 function isIos() {
     const userAgent = window.navigator.userAgent.toLowerCase();
@@ -33,10 +43,12 @@ function isInStandaloneMode() {
     return ('standalone' in window.navigator) && (window.navigator.standalone);
 }
 
-if (isIos() && !isInStandaloneMode()) {
-    const iosPrompt = document.getElementById('iosInstallPrompt');
-    iosPrompt.style.display = 'block';
-}
+window.onload = () => {
+    if (isIos() && !isInStandaloneMode()) {
+        installMessage.textContent = "Tap the share icon and then 'Add to Home Screen' to install this app.";
+        installPrompt.style.display = 'block'; // Show for iOS
+    }
+};
 
 
 window.addEventListener('DOMContentLoaded', () => {
