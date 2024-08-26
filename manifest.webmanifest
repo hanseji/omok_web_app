@@ -5,7 +5,7 @@
   "display": "fullscreen",
   "share_target": {
     "action": "/self-closing-page.html",
-    "method": "GET",
+    "method": "POST",
     "params": {
       "title": "title",
       "text": "text",
