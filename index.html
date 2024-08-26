@@ -19,12 +19,16 @@
 
 <body>
 	<h1>Share Target API Example</h1>
-	<p id="message">Share a YouTube link to this PWA!</p>
-	<button onClick={installApp}>앱 설치하기</button>
     <div class="container mt-5">
         <h1>Welcome to Our PWA!</h1>
-        <p>Click the button below to install our app!</p>
+        <p>버튼을 눌러 앱을 설치하세요</p>
         <button id="installBtn" class="btn btn-primary" style="display: none;">Install App</button>
+        <div id="iosInstallPrompt" class="alert alert-info"> <!-- style="display: none;" -->
+            <h4>설치 없이 앱으로 열기</h4>
+			<p>부라우저 하단 <strong>공유 버튼</strong><img src="images\ios-share186x256.png" alt="Share Icon" style="height: 20px;"> 누르기</p>
+			<p><strong>홈 화면에 선택</strong> 누르기</p>
+			<p></p>
+        </div>
     </div>
 	<script>
 		if ('serviceWorker' in navigator) {

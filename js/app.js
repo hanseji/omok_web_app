@@ -24,6 +24,20 @@ window.addEventListener('beforeinstallprompt', (e) => {
     });
 });
 
+function isIos() {
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    return /iphone|ipad|ipod/.test(userAgent);
+}
+
+function isInStandaloneMode() {
+    return ('standalone' in window.navigator) && (window.navigator.standalone);
+}
+
+if (isIos() && !isInStandaloneMode()) {
+    const iosPrompt = document.getElementById('iosInstallPrompt');
+    iosPrompt.style.display = 'block';
+}
+
 
 window.addEventListener('DOMContentLoaded', () => {
     document.body.style.display = 'block'; // 문서가 준비되면 본문 보이기
