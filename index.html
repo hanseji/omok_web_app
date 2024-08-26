@@ -21,6 +21,11 @@
 	<h1>Share Target API Example</h1>
 	<p id="message">Share a YouTube link to this PWA!</p>
 	<button onClick={installApp}>앱 설치하기</button>
+    <div class="container mt-5">
+        <h1>Welcome to Our PWA!</h1>
+        <p>Click the button below to install our app!</p>
+        <button id="installBtn" class="btn btn-primary" style="display: none;">Install App</button>
+    </div>
 	<script>
 		if ('serviceWorker' in navigator) {
 			navigator.serviceWorker.register('/sw.js');
