@@ -33,6 +33,9 @@
 
     <div class="overlay" id="overlay">
         <div id="popup" class="popup">
+            <h3 id="title" class="h3"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 80%;"><strong>시간을 선택해주세요</strong></h3>
+            <div>이해가 안 되는 부분을 드래그 해주세요. 이후, </div><br><br>
             <div class="responsive-video">
                 <div id="youtubeVideo"></div>
             </div>
@@ -48,7 +51,9 @@
 
         </div>
     </div>
-    <button class="fixed-button" onclick="showPopup()">Toggle Popup</button>
+    <div class="d-grid gap-2">
+        <button class="btn btn-dark fixed-button" onclick="showPopup()">영상 시간 선택</button>
+    </div>
     <script src="/js/view-results-page.js"></script>
 </body>
 

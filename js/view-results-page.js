@@ -45,12 +45,10 @@ function onPlayerReady(event) {
 
 // 5. API는 플레이어의 상태가 변화될 때 아래의 function을 불러올 것이다.
 //    이 function은 비디오가 재생되고 있을 때를 가르킨다.(state=1)
-var done = false;
 function onPlayerStateChange(event) {
     //setTimeout(stopVideo(), 1000);
-    // if (event.data == YT.PlayerState.PLAYING && !done) {
-    //     setTimeout(stopVideo, 6000);
-    //     done = true;
+    // if (event.data == YT.PlayerState.PLAYING) {
+    //     setTimeout(stopVideo, 1000);
     // }
 }
 function stopVideo() {
