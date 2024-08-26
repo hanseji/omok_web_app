@@ -30,9 +30,10 @@
         4. 미국과 캐나다 사이에는 차로 이동할 수 있는 거리이지만, 연봉 차이가 크게 나타납니다.
         5. 캐나다의 인재를 잡기는 어렵습니다.
     </p>
+    
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/iDjQSdN_ig8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
     <div class="d-grid gap-2">
         <button id="closeApp" class="btn btn-dark disabled" type="button">해당 시간에 요약 보기</button>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/iDjQSdN_ig8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     <script>
         // Function to handle the shared data
@@ -44,7 +45,7 @@
 
             if (text) {
                 //document.getElementById('content').innerText = `${text}`;
-                document.getElementById('content').innerText = `${title}`;
+                document.getElementById('title').innerText = `${title}`;
             }
         }
 
