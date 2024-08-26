@@ -95,9 +95,9 @@ function handleSharedData() {
     const text = parsedUrl.searchParams.get('text');
     const url = parsedUrl.searchParams.get('url');
 
-    //const youtubeUrl = new URL(text);
-    youtubeID = parsedUrl.searchParams.get('v');
-    youtubeTime = parsedUrl.searchParams.get('t') || 0;
+    const youtubeUrl = new URL(text);
+    youtubeID = youtubeUrl.searchParams.get('v');
+    youtubeTime = youtubeUrl.searchParams.get('t') || 0;
 
     if (text) {
         //document.getElementById('content').innerText = `${text}`;
