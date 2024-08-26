@@ -125,5 +125,5 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 document.getElementById('closeApp').addEventListener('click', function () {
-    window.open(`https://youtu.be/watch?v=${videoId}`, '_blank');
+    window.open(`https://youtu.be/watch?v=${youtubeID}`, '_blank');
 });
