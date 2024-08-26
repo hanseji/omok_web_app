@@ -1,4 +1,5 @@
 let deferredPrompt;
+const installPromptOverlay = document.getElementById('overlay');
 const installPrompt = document.getElementById('installPrompt');
 const installButton = document.getElementById('installButton');
 const installMessage = document.getElementById('installMessage');
@@ -13,6 +14,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
         installButton.style.display = 'block';
         installMessage.innerHTML = "빠르고 쉽게 이용하려면 홈 화면에 이 앱을 설치하세요. 아래 버튼을 누르면 앱이 설치됩니다.";
         installPrompt.style.display = 'block';
+        installPromptOverlay.style.display = 'block';
     }
 });
 
@@ -32,6 +34,7 @@ installButton.addEventListener('click', async () => {
 
 function closePrompt() {
     installPrompt.style.display = 'none';
+    installPromptOverlay.style.display = 'none';
 }
 
 function isIos() {
@@ -54,6 +57,7 @@ window.onload = () => {
         </div>`
         installMessage.innerHTML = iosInstallInfo;
         installPrompt.style.display = 'block'; // Show for iOS
+        installPromptOverlay.style.display = 'block'; // Show for iOS
     }
 };
 
