@@ -8,6 +8,7 @@ self.addEventListener('install', (event) => {
                 '/images/icon-192.png',
                 '/images/icon-512.png',
                 '/app.js',
+                '/self-closing-page.html',
             ]);
         })
     );
