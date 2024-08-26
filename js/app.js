@@ -1,8 +1,4 @@
 
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js');
-}
-
 // Function to handle the shared data
 function handleSharedData() {
     const parsedUrl = new URL(window.location);
