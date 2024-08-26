@@ -11,7 +11,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
     // Only show the install button for Android devices
     if (!isIos()) {
         installButton.style.display = 'block';
-        installMessage.textContent = "Install this app on your home screen for quick and easy access.";
+        installMessage.innerHTML = "빠르고 쉽게 이용하려면 홈 화면에 이 앱을 설치하세요. 아래 버튼을 누르면 앱이 설치됩니다.";
         installPrompt.style.display = 'block';
     }
 });
@@ -45,7 +45,14 @@ function isInStandaloneMode() {
 
 window.onload = () => {
     if (isIos() && !isInStandaloneMode()) {
-        installMessage.textContent = "Tap the share icon and then 'Add to Home Screen' to install this app.";
+        iosInstallInfo = `
+        <div id="iosInstallPrompt">
+			<p>아래 순서를 따라해 홈 화면에 앱이 설치하세요.</p>
+			<p>1. 부라우저 하단 <strong>공유 버튼</strong> <img src="images/share_ios-512.png" alt="Share Icon" style="height: 18px; width: 18px; margin-bottom: 0.2rem;"> 누르기</p>
+			<p>2. <strong>홈 화면에 선택</strong> 누르기</p>
+			<p></p>
+        </div>`
+        installMessage.innerHTML = iosInstallInfo;
         installPrompt.style.display = 'block'; // Show for iOS
     }
 };

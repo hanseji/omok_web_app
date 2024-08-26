@@ -5,12 +5,13 @@
     right: 0;
     margin: auto;
     width: 90%;
-    max-width: 400px;
+    max-width: 500px;
     background: white;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
     display: none;
+    word-break: keep-all;
 }
 
 .install-prompt img {

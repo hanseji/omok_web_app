@@ -8,7 +8,7 @@
 	<link rel="apple-touch-icon" href="/images/icon-192.png" />
 	<title>오목눈이</title>
 
-    <link href="css\main.css" rel="stylesheet">
+	<link href="css\main.css" rel="stylesheet">
 
 	<!-- bootstrap CSS CDN link -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -20,12 +20,14 @@
 </head>
 
 <body>
-    <div class="install-prompt" id="installPrompt">
-        <button class="btn-close" onclick="closePrompt()"></button>
-        <h5>홈 화면에 앱 추가</h5>
-        <p id="installMessage">빠르고 쉽게 이용하려면 홈 화면에 이 앱을 설치하세요. 아래 버튼을 누르면 앱이 설치됩니다.</p>
-        <button id="installButton" class="btn btn-primary" style="display: none;">설치하기</button>
-    </div>
+	<div class="install-prompt" id="installPrompt">
+		<div style="display: flex; justify-content: space-between; align-items: center;">
+			<h5>홈 화면에 앱 추가</h5>
+			<button class="btn-close" onclick="closePrompt()"></button>
+		</div>
+		<p id="installMessage">빠르고 쉽게 이용하려면 홈 화면에 이 앱을 설치하세요. 아래 버튼을 누르면 앱이 설치됩니다.</p>
+		<button id="installButton" class="btn btn-primary" style="display: none;">설치하기</button>
+	</div>
 	<script>
 		if ('serviceWorker' in navigator) {
 			navigator.serviceWorker.register('/sw.js');
