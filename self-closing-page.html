@@ -11,7 +11,7 @@
         document.getElementById('closeApp').addEventListener('click', function() {
             // 여기에 유튜브 링크를 입력하세요
             var youtubeID = "CAtxNQDUzvk"
-            var youtubeUrl = "https://youtu.be/watch?v=${youtubeID}";
+            var youtubeUrl = `https://youtu.be/watch?v=${youtubeID}`;
 
             // 유튜브 앱이 설치되어 있으면 앱으로 열기, 없으면 브라우저에서 열기
             var deepLink = `vnd.youtube://${youtubeUrl.split("https://youtu.be/")[1]}`;
