@@ -28,6 +28,7 @@ function askForNPerm() {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+    document.body.style.display = 'block'; // 문서가 준비되면 본문 보이기
     askForNPerm()
     handleSharedData();
 });
