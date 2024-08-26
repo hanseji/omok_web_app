@@ -6,10 +6,14 @@ body {
 }
 
 .body-no-scroll {
-    overflow: hidden; /* 스크롤을 비활성화합니다 */
-    height: 100vh; /* 화면 높이를 기준으로 고정합니다 */
-    width: 100vw; /* 화면 너비를 기준으로 고정합니다 */
-    position: fixed; /* body가 고정되도록 설정 */
+    overflow: hidden;
+    /* 스크롤을 비활성화합니다 */
+    height: 100vh;
+    /* 화면 높이를 기준으로 고정합니다 */
+    width: 100vw;
+    /* 화면 너비를 기준으로 고정합니다 */
+    position: fixed;
+    /* body가 고정되도록 설정 */
 }
 
 /* 비디오를 감싸는 컨테이너 스타일 */
@@ -58,10 +62,17 @@ body {
 .popup {
     background: white;
     padding: 20px;
-    border-radius: 10px 10px 0 0; /* Rounded corners at the top */
+    border-radius: 10px 10px 0 0;
+    /* Rounded corners at the top */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
     transform: translateY(100%);
     transition: transform 0.3s ease-out;
     z-index: 1000;
+}
+
+.bottomButton {
+    padding-bottom: 12px;
+    padding-top: 12px;
+    margin-bottom: 20px;
 }

@@ -33,23 +33,29 @@
 
     <div class="overlay" id="overlay">
         <div id="popup" class="popup">
-            <h3 id="title" class="h3"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 80%;"><strong>시간을 선택해주세요</strong></h3>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 id="title" class="h3"
+                    style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 80%;"><strong>시간을
+                        선택해주세요</strong></h3>
+                <button onclick="hidePopup()" type="button" class="btn-close" aria-label="Close"></button>
+            </div>
             <div>이해가 안 되는 부분을 드래그 해주세요. 이후, </div><br><br>
             <div class="responsive-video">
                 <div id="youtubeVideo"></div>
             </div>
 
-            <input type="range" id="slider" min="0" max="100" value="0" class="form-range" style="width: 100%;" form-range-thumb-bg="black">
+            <input type="range" id="slider" min="0" max="100" value="0" class="form-range" style="width: 100%;"
+                form-range-thumb-bg="black">
 
             <div class="d-grid gap-2">
-                <button id="closePopup" onclick="hidePopup()" class="btn btn-primary" type="button">00분 00초의 요약 보기</button>
+                <button id="closePopup" onclick="hidePopup()" class="btn btn-primary bottomButton" type="button" style="margin-top: 12px;">00분 00초의 요약
+                    보기</button>
             </div>
 
         </div>
     </div>
     <div class="d-grid gap-2">
-        <button class="btn btn-primary fixed-button" onclick="showPopup()">요약 보기</button>
+        <button class="btn btn-primary fixed-button bottomButton" onclick="showPopup()">요약 보기</button>
     </div>
     <script src="/js/view-results-page.js"></script>
 </body>
