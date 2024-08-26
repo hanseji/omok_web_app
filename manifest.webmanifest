@@ -4,8 +4,8 @@
   "start_url": "/",
   "display": "fullscreen",
   "share_target": {
-    "action": "/self-closing-page.html",
-    "method": "POST",
+    "action": "/",
+    "method": "GET",
     "params": {
       "title": "title",
       "text": "text",
