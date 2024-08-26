@@ -41,18 +41,15 @@
             </div>
 
             <input type="range" id="slider" min="0" max="100" value="0" class="form-range" style="width: 100%;" form-range-thumb-bg="black">
-            <div class="slider-info">
-                <span id="sliderValue">0</span> / 100
-            </div>
 
             <div class="d-grid gap-2">
-                <button id="closeApp" onclick="hidePopup()" class="btn btn-dark" type="button">해당 시간에 요약 보기</button>
+                <button id="closePopup" onclick="hidePopup()" class="btn btn-primary" type="button">00분 00초의 요약 보기</button>
             </div>
 
         </div>
     </div>
     <div class="d-grid gap-2">
-        <button class="btn btn-dark fixed-button" onclick="showPopup()">영상 시간 선택</button>
+        <button class="btn btn-primary fixed-button" onclick="showPopup()">요약 보기</button>
     </div>
     <script src="/js/view-results-page.js"></script>
 </body>

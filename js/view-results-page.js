@@ -1,6 +1,6 @@
 // Slider handling
 var slider = document.getElementById("slider");
-var sliderValueDisplay = document.getElementById("sliderValue");
+var sliderCheckButton = document.getElementById("closePopup");
 var youtubeVideo = document.getElementById("youtubeVideo")
 
 var youtubeID = ""
@@ -56,7 +56,7 @@ function stopVideo() {
 }
 
 slider.oninput = function () {
-    sliderValueDisplay.textContent = this.value;
+    sliderCheckButton.innerText = `${String(Math.floor(this.value/60)).padStart(2, "0")}분 ${String(this.value%60).padStart(2, "0")}초의 요약 보기`;
     youtubeTime = this.value
 }
 
