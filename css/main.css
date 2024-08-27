@@ -1,3 +1,8 @@
+
+body {
+
+    background-color: #f4f4f4;
+}
 .overlay {
     position: fixed;
     top: 0;
@@ -45,4 +50,30 @@
 
 .close-btn img {
     width: 20px;
+}
+
+.guide-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    margin-bottom: 20px;
+    padding: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+    max-width: 600px;
+}
+
+.guide-icon {
+    width: -webkit-fill-available;
+    max-width: 400px;
+}
+
+.guide-step {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.guide-text {
+    flex-grow: 1;
 }
