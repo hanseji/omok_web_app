@@ -3,7 +3,7 @@
   "short_name": "오목눈이",
   "start_url": "/",
   "display": "fullscreen",
-  "theme_color": "#000000",
+  "theme_color": "#1200ff",
   "share_target": {
     "action": "/view-results-page.html",
     "method": "GET",
@@ -24,5 +24,16 @@
       "type": "image/png",
       "sizes": "512x512"
     }
+  ],
+  "background_color": "#ffffff",
+  "id": "omoknuni",
+  "description": "YouTube Content Summary AI",
+  "dir": "auto",
+  "lang": "ko",
+  "orientation": "natural",
+  "categories": [
+    "education",
+    "productivity",
+    "utilities"
   ]
 }
