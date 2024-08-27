@@ -73,7 +73,8 @@ body {
 }
 
 .bottomButton {
-    padding-bottom: 24px;
-    padding-top: 24px;
+    border-radius: 12px;
+    padding-bottom: 18px;
+    padding-top: 18px;
     margin-bottom: 60px;
 }
