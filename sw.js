@@ -7,7 +7,7 @@ self.addEventListener('install', (event) => {
                 '/manifest.webmanifest',
                 '/images/icon-192.png',
                 '/images/icon-512.png',
-                '/app.js',
+                'js/app.js',
                 '/self-closing-page.html',
             ]);
         })
