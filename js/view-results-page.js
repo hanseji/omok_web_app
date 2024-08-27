@@ -46,9 +46,9 @@ function onPlayerReady(event) {
 // 5. API는 플레이어의 상태가 변화될 때 아래의 function을 불러올 것이다.
 //    이 function은 비디오가 재생되고 있을 때를 가르킨다.(state=1)
 function onPlayerStateChange(event) {
-    //setTimeout(stopVideo(), 1000);
+    // setTimeout(stopVideo(), 5000);
     // if (event.data == YT.PlayerState.PLAYING) {
-    //     setTimeout(stopVideo, 1000);
+    //     setTimeout(stopVideo, 3000);
     // }
 }
 function stopVideo() {
@@ -56,7 +56,7 @@ function stopVideo() {
 }
 
 slider.oninput = function () {
-    sliderCheckButton.innerText = `${String(Math.floor(this.value/60)).padStart(2, "0")}분 ${String(this.value%60).padStart(2, "0")}초의 요약 보기`;
+    sliderCheckButton.innerText = `${String(Math.floor(this.value/60)).padStart(2, "0")}분 ${String(this.value%60).padStart(2, "0")}초의 설명 보기`;
     youtubeTime = this.value
 }
 
