@@ -63,7 +63,7 @@ body {
 .popup {
     background: white;
     padding: 20px;
-    border-radius: 10px 10px 0 0;
+    border-radius: 20px 20px 0 0;
     /* Rounded corners at the top */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
@@ -73,7 +73,7 @@ body {
 }
 
 .bottomButton {
-    padding-bottom: 12px;
-    padding-top: 12px;
-    margin-bottom: 20px;
+    padding-bottom: 24px;
+    padding-top: 24px;
+    margin-bottom: 60px;
 }
