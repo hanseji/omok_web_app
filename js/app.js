@@ -26,13 +26,13 @@ installButton.addEventListener('click', async () => {
     // Wait for the user to respond to the prompt
     const { outcome } = await deferredPrompt.userChoice;
     if (outcome === 'accepted') {
+        installButtonInInfo.classList.add("disabled")
         console.log('User accepted the A2HS prompt');
     } else {
         console.log('User dismissed the A2HS prompt');
     }
     deferredPrompt = null;
     installButton.style.display = 'none';
-    installButtonInInfo.classList.add("disabled")
     closePrompt()
 });
 
@@ -42,12 +42,12 @@ installButtonInInfo.addEventListener('click', async () => {
     // Wait for the user to respond to the prompt
     const { outcome } = await deferredPrompt.userChoice;
     if (outcome === 'accepted') {
+        installButtonInInfo.classList.add("disabled")
         console.log('User accepted the A2HS prompt');
     } else {
         console.log('User dismissed the A2HS prompt');
     }
     deferredPrompt = null;
-    installButtonInInfo.classList.add("disabled")
 });
 
 function closePrompt() {
