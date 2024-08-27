@@ -2,6 +2,7 @@ let deferredPrompt;
 const installPromptOverlay = document.getElementById('overlay');
 const installPrompt = document.getElementById('installPrompt');
 const installButton = document.getElementById('installButton');
+const installButtonInInfo = document.getElementById('installButtonInInfo');
 const installMessage = document.getElementById('installMessage');
 
 window.addEventListener('beforeinstallprompt', (e) => {
@@ -12,6 +13,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
     // Only show the install button for Android devices
     if (!isIos()) {
         installButton.style.display = 'block';
+        installButtonInInfo.style.display = 'block';
         installMessage.innerHTML = "빠르고 쉽게 이용하려면 홈 화면에 이 앱을 설치하세요. 아래 버튼을 누르면 앱이 설치됩니다.";
         installPrompt.style.display = 'block';
         installPromptOverlay.style.display = 'block';
@@ -30,6 +32,22 @@ installButton.addEventListener('click', async () => {
     }
     deferredPrompt = null;
     installButton.style.display = 'none';
+    installButtonInInfo.classList.add("disabled")
+    closePrompt()
+});
+
+installButtonInInfo.addEventListener('click', async () => {
+    // Show the install prompt
+    deferredPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+        console.log('User accepted the A2HS prompt');
+    } else {
+        console.log('User dismissed the A2HS prompt');
+    }
+    deferredPrompt = null;
+    installButtonInInfo.classList.add("disabled")
 });
 
 function closePrompt() {
