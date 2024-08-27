@@ -3,7 +3,7 @@
   "short_name": "오목눈이",
   "start_url": "/",
   "display": "fullscreen",
-  "background_color": "white",
+  "theme_color": "#000000",
   "share_target": {
     "action": "/view-results-page.html",
     "method": "GET",
