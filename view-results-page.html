@@ -7,8 +7,8 @@
     <title>Document</title>
 
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
 
 
     <!-- bootstrap CSS CDN link -->
@@ -22,24 +22,42 @@
 </head>
 
 <body>
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 40px;">
-        <h2 id="title" class="h2"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 80%;">Example heading</h2>
-        <button id="closeApp" type="button" class="btn-close" aria-label="Close"></button>
+    <div style="display: flex;flex-direction: column;flex: 1 1 auto; height: 100vh;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 40px;">
+            <h2 id="title" class="h2"
+                style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 80%;">Example heading
+            </h2>
+            <button id="closeApp" type="button" class="btn-close" aria-label="Close"></button>
+        </div>
+        <pre class="scrollWrapper" style="white-space: pre-wrap; word-wrap: break-word; word-break: keep-all; margin-top: 40px; flex: 1 1 auto; overflow-y: auto;"><strong><p id="content" class="fw-light">
+            
+        </p></strong></pre>
+        <div style="width: 100%; height: 144px; flex-shrink: 0;"></div>
     </div>
-    <pre style="white-space: pre-wrap; word-wrap: break-word; word-break: keep-all"><strong><p id="content" class="fw-light">
-1. 소프트웨어 공학을 전공한 졸업생 중 3분의 2가 미국에 취업했습니다.
-2. 캐나다도 좋은 곳이지만, 캐나다에서 일하는 졸업생들은 적습니다.
-3. 캐나다를 떠난 졸업생들의 평균 연봉은 1억 5천 원이지만, 캐나다에 남아있을 경우 8천만 원밖에 벌지 못합니다.
-4. 미국과 캐나다 사이에는 차로 이동할 수 있는 거리이지만, 연봉 차이가 크게 나타납니다.
-5. 캐나다의 인재를 잡기는 어렵습니다.
-    </p></strong></pre>
+    <div class="d-grid gap-2">
+        <button id="openPopupButton" class="btn btn-primary fixed-button bottomButton" onclick="showPopup()">특정 구간 설명
+            보기</button>
+    </div>
 
+
+    <!--로딩창-->
+    <div id="loadingScreen" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center; z-index: 999;">
+        <div style="padding: 20px; background: white; border-radius: 10px;">
+            <h2 style="margin-bottom: 20px;">영상을 요약중입니다</h2>
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+
+
+    <!--팝업창-->
     <div class="overlay" id="overlay">
         <div id="popup" class="popup">
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <h3 id="title" class="h3"
-                    style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 80%;"><strong>특정 구간 설명 보기</strong></h3>
+                    style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 80%;"><strong>특정
+                        구간 설명 보기</strong></h3>
                 <button onclick="hidePopup()" type="button" class="btn-close" aria-label="Close"></button>
             </div>
             <small>슬라이더를 움직여 영상에서 이해하기 어려운 단어나 문장이 있는 곳에서 멈추세요. 그 다음 버튼을 누르면 그 부분을 쉽게 설명해줍니다.</small>
@@ -50,14 +68,12 @@
             <input type="range" id="slider" min="0" max="100" value="0" style="width: 100%; margin-top: 12px;">
 
             <div class="d-grid gap-2">
-                <button id="closePopup" onclick="hidePopup()" class="btn btn-primary bottomButton" type="button" style="margin-top: 12px;">00분 00초의 설명
+                <button id="closePopup" onclick="hidePopup(); CreateSpaceContent(` `); fetchSummaryData();" class="btn btn-primary bottomButton" type="button"
+                    style="margin-top: 12px;">00분 00초의 설명 <!--fetchSummaryData();-->
                     보기</button>
             </div>
 
         </div>
-    </div>
-    <div class="d-grid gap-2">
-        <button class="btn btn-primary fixed-button bottomButton" onclick="showPopup()">특정 구간 설명 보기</button>
     </div>
     <script src="/js/view-results-page.js"></script>
 </body>

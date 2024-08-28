@@ -1,7 +1,8 @@
 // Slider handling
 var slider = document.getElementById("slider");
 var sliderCheckButton = document.getElementById("closePopup");
-var youtubeVideo = document.getElementById("youtubeVideo")
+var youtubeVideo = document.getElementById("youtubeVideo");
+var openPopupButton = document.getElementById("openPopupButton");
 
 var youtubeID = ""
 var youtubeTime = 0
@@ -100,12 +101,35 @@ function handleSharedData() {
     if (text) {
         //document.getElementById('content').innerText = `${text}`;
         document.getElementById('title').innerText = `${title}`;
+        fetchSummaryData();
     }
 }
 
-function CreateSpaceContent() {
+function fetchSummaryData() {
+    showLoadingSpinner();
+    console.log(youtubeTime);
+    console.log(`https://omok-w.fly.dev/youtube_summary/${youtubeID}?t=${youtubeTime}`);
+    fetch(`https://omok-w.fly.dev/youtube_summary/${youtubeID}?t=${youtubeTime}`)
+        .then((response) => response.json())
+        .then((data) => CreateSpaceContent(data.summary_result))
+        .catch(error => {CreateSpaceContent('데이터를 가져오는 중 에러가 발생하였습니다\n에러코드 : ', error);hideLoadingSpinner()})
+        .finally(() => hideLoadingSpinner());
+}
+
+function showLoadingSpinner() {
+    document.getElementById("loadingScreen").style.display = 'flex';
+    openPopupButton.classList.add("disabled");
+}
+
+function hideLoadingSpinner() {
+    document.getElementById("loadingScreen").style.display = 'none';
+    openPopupButton.classList.remove("disabled");
+}
+
+function CreateSpaceContent(textInput) {
     var contentElement = document.getElementById("content");
-    var text = contentElement.innerText;
+    if (textInput == null){var text = contentElement.innerText;}
+    else{var text = textInput}
     var lines = text.split('\n');
     var formattedText = lines.map(function (line) {
         if (line.match(/^\d+\./)) { // Checks if the line starts with number followed by dot
@@ -118,7 +142,7 @@ function CreateSpaceContent() {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-    CreateSpaceContent();
+    CreateSpaceContent(null);
     handleSharedData();
 });
 

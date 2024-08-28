@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 
 body {
-    padding: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
     font-family: "Noto Sans KR";
 }
 
@@ -78,3 +79,14 @@ body {
     padding-top: 18px;
     margin-bottom: 60px;
 }
+
+.scrollWrapper::after {  
+    content: ""; /* 의사 요소에 내용 없음 */
+    position: absolute;
+    bottom: 160px; /* 요소 하단에 위치 */
+    left: 0;
+    width: 100%; /* 요소 너비와 동일하게 설정 */
+    height: 100px; /* 그라데이션 높이 */
+    background-image: linear-gradient(to bottom, transparent, white); /* 그라데이션 효과 적용 */
+    pointer-events: none; /* 클릭 이벤트 방지 */
+  }
