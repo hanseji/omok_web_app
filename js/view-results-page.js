@@ -108,11 +108,11 @@ function handleSharedData() {
 function fetchSummaryData() {
     showLoadingSpinner();
     console.log(youtubeTime);
-    console.log(`https://omok-w.fly.dev/youtube_summary/${youtubeID}?t=${youtubeTime}`);
-    fetch(`https://omok-w.fly.dev/youtube_summary/${youtubeID}?t=${youtubeTime}`)
+    console.log(`https://omok-w.fly.dev/youtube_summary/${youtubeID}?t=${youtubeTime}s`);
+    fetch(`https://omok-w.fly.dev/youtube_summary/${youtubeID}?t=${youtubeTime}s`)
         .then((response) => response.json())
         .then((data) => CreateSpaceContent(data.summary_result))
-        .catch(error => {CreateSpaceContent('데이터를 가져오는 중 에러가 발생하였습니다\n에러코드 : ', error);hideLoadingSpinner()})
+        .catch(error => {CreateSpaceContent('데이터를 가져오는 중 에러가 발생하였습니다\n에러코드 : ', error);hideLoadingSpinner();})
         .finally(() => hideLoadingSpinner());
 }
 
