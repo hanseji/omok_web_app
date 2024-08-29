@@ -27,12 +27,18 @@ self.addEventListener("fetch", (event) => {
             return Response.redirect('/index.html', 303);
         }
     } else {
+        /**
+         * @TODO 나중에 다시 캐시 사용할 수 있게 수정
+         */
+        return fetch(event.request);
         // Regular requests not related to Web Share Target.
+        /*
         event.respondWith(
             caches.match(event.request).then((response) => {
                 return response || fetch(event.request);
             })
         );
+        */
     }
 
 });
