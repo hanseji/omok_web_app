@@ -1,4 +1,8 @@
-import {setCookie, getCookie, deleteCookie} from "./utility";
+import {setCookie, getCookie, deleteCookie} from "./utility.js";
+import { PopupComponent } from './components/popupComponent.js';
+customElements.get('popup-component') || customElements.define('popup-component', PopupComponent);
+const popup = document.querySelector('popup-component');
+
 
 let deferredPrompt;
 const installPromptOverlay = document.getElementById('overlay');
@@ -52,10 +56,10 @@ installButtonInInfo.addEventListener('click', async () => {
     deferredPrompt = null;
 });
 
-function closePrompt() {
+document.getElementById("closePopup").addEventListener('click', ()=> {
     installPrompt.style.display = 'none';
     installPromptOverlay.style.display = 'none';
-}
+});
 
 function isIos() {
     const userAgent = window.navigator.userAgent.toLowerCase();
@@ -88,7 +92,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 function handleCookies() {
-    cookieValue = getCookie("ph_number");
+    var cookieValue = getCookie("ph_number");
     var freeTimeValue = getCookie("free_times");
 
     if (cookieValue != null) {
