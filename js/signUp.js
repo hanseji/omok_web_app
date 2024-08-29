@@ -19,14 +19,14 @@ function signUpSubmit() {
             if(data.signin) {
                 //회원가입 성공
                 set_cookie("ph_number", telNumber, 730);
-                location.replace(`/view-results-page.html?text=www.youtube.com/watch?v=${videoID}t=${videoTime}`);
+                location.replace(`/view-results-page.html`);
             } else {
                 console.log("이건");
                 //회원가입 실패
                 if(String(data.status) == "already exists") {
                     //회원 정보 이미 있음
                     set_cookie("ph_number", telNumber, 730);
-                    location.replace(`/view-results-page.html?text=www.youtube.com/watch?v=${videoID}t=${videoTime}`);
+                    location.replace(`/view-results-page.html`);
                     //window.open("https://omoknuni.netlify.app/login.js");
                 } else if(data.status == "no age or region or name") {
                     //정보 빠짐
