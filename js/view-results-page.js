@@ -7,6 +7,7 @@ var openPopupButton = document.getElementById("openPopupButton");
 var youtubeID = ""
 var youtubeTime = 0
 
+//바로 실행되는 함수
 
 // Iframe Player API를 비동기적으로 로드
 var tag = document.createElement('script');
@@ -101,6 +102,7 @@ function handleSharedData() {
     if (text) {
         //document.getElementById('content').innerText = `${text}`;
         document.getElementById('title').innerText = `${title}`;
+        handleCookies(); //쿠키 관리
         fetchSummaryData();
     }
 }
@@ -141,6 +143,31 @@ function CreateSpaceContent(textInput) {
     contentElement.innerHTML = formattedText;
 }
 
+function handleCookies() {
+    cookieValue = getCookie("ph_number");
+    freeTimeValue = getCookie("free_times");
+
+    if (cookieValue == null && freeTimeValue == null) {
+        //처음 사용해보는 사람임
+        setCookie("free_times", 1, 30);
+        console.log("1");
+    } else if (cookieValue == null && Number(freeTimeValue) < 5) {
+        //이전에 사용한 적이 있지만 5번 미만으로 사용한 사람임
+        //아직 회원가입 의무 없음
+        setCookie("free_times", String(Number(freeTimeValue) + 1), 30);
+        console.log("2");
+    } else if(cookieValue == null) {
+        //회원가입 의무 있음
+        console.log("회원가입 해");
+        const oldUrl = '/'; // 기본 URL
+        const changeUrl = `/signUp.html?v=${youtubeID}?t=${youtubeTime}s`; // 기본 URL로 사이트 접속 시 변경하고 싶은 URL
+        location.replace(changeUrl);
+    } else if (cookieValue != null) {
+        //이미 로그인한 사람으로 회원가입 의무 없음
+        console.log("3");
+    }
+}
+
 window.addEventListener('DOMContentLoaded', () => {
     CreateSpaceContent(null);
     handleSharedData();
@@ -149,3 +176,22 @@ window.addEventListener('DOMContentLoaded', () => {
 document.getElementById('closeApp').addEventListener('click', function () {
     window.open(`https://youtu.be/watch?v=${youtubeID}`, '_blank');
 });
+
+
+//쿠키 저장하는 함수
+function setCookie(name, value, expireDays) {
+    var date = new Date();
+    date.setTime(date.getTime() + expireDays * 24 * 60 * 60 * 1000);
+    document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + ';expires=' + date.toUTCString() + ';path=/';
+}
+
+//쿠키 값 가져오는 함수
+function getCookie(name) {
+    var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+    return value? value[2] : null;
+}
+
+//쿠키 삭제하는 함수
+function deleteCookie(name) {
+    document.cookie = encodeURIComponent(name) + '=; expires=Thu, 01 JAN 1999 00:00:10 GMT';
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+</head>
+<body>
+    이름
+    <input id="nameInput" type="text"><br>
+    전화번호
+    <input id="telNumber" type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"><br>
+    경계선 지능인 여부
+    <input id="isBorderline" type="checkbox"><br>
+    나이
+    <input type="radio" name="ages" value="E"> 초등학생
+    <input type="radio" name="ages" value="M"> 중학생
+    <input type="radio" name="ages" value="H"> 고등학생
+    <input type="radio" name="ages" value="C"> 대학생
+    <input type="radio" name="ages" value="Y">청년
+    <input type="radio" name="ages" value="MA">중년 <br>
+    지역
+    <input type="radio" name="region" value="SE"> 서울
+    <input type="radio" name="region" value="GG"> 경기도
+    <input type="radio" name="region" value="GW"> 강원도
+    <input type="radio" name="region" value="YN"> 영남
+    <input type="radio" name="region" value="HN"> 호남
+    <input type="radio" name="region" value="JJ"> 제주<br>
+    <input type="submit" onclick="signUpSubmit()">
+
+    <script src="js/signUp.js/"></script>
+</body>
+</html>
