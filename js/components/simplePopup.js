@@ -3,6 +3,16 @@ export class PopupComponent extends HTMLElement {
         super();
         this.attachShadow({ mode: 'open' });
 
+        this.shadowRoot.innerHTML = `
+            <!-- bootstrap CSS CDN link -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+                integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+            <!-- bootstrap JS CDN script -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+                crossorigin="anonymous"></script>
+        `
+
         const style = document.createElement('style');
         style.textContent = `
             .popup-overlay {
@@ -20,12 +30,39 @@ export class PopupComponent extends HTMLElement {
             .popup {
                 background: white;
                 padding: 20px;
-                border-radius: 10px;
-                width: 300px;
+                border-radius: 15px;
+                width: 90%;
+                max-width: 500px;
+                word-break: keep-all;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             }
 
-            button {
-                margin: 5px;
+            .buttonArea {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                gap: 20px;
+            }
+
+            .header {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            h2 {
+                margin-block-start: 0.5em;
+                margin-block-end: 0.5em;
+            }
+
+            .btn {
+                flex-grow: 1;
+                border: 1px solid transparent;
+                border-radius: 12px;
+                padding-bottom: 18px;
+                padding-top: 18px;
+                margin-top: 10px;
             }
         `;
 
@@ -38,11 +75,20 @@ export class PopupComponent extends HTMLElement {
         const popup = document.createElement('div');
         popup.className = 'popup';
 
+        const header = document.createElement('div');
+        header.className = 'header';
         const title = document.createElement('h2');
+        const closeButton = document.createElement('button');
+        closeButton.className = 'btn-close';
+
         const content = document.createElement('p');
 
+        const buttonArea = document.createElement('div');
+        buttonArea.className = 'buttonArea';
+
         overlay.appendChild(popup);
-        popup.append(title, content);
+        header.append(title, closeButton);
+        popup.append(header, content, buttonArea);
         this.shadowRoot.appendChild(overlay);
     }
 
@@ -51,7 +97,7 @@ export class PopupComponent extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['title', 'content', 'button-config'];
+        return ['title', 'content', 'button-config', 'close-button', 'opened'];
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
@@ -62,10 +108,14 @@ export class PopupComponent extends HTMLElement {
         const overlay = this.shadowRoot.querySelector('.popup-overlay');
         const title = this.shadowRoot.querySelector('h2');
         const content = this.shadowRoot.querySelector('p');
+        const buttonArea = this.shadowRoot.querySelector('.buttonArea');
+        const closeButton = this.shadowRoot.querySelector('.btn-close');
         const popup = this.shadowRoot.querySelector('.popup');
+        
+        const useCloseButton = this.getAttribute('close-button') || "false";
 
-        // Remove old buttons
-        popup.querySelectorAll('button').forEach(btn => btn.remove());
+        // 이미 쓴 버튼은 다 버리기
+        buttonArea.querySelectorAll('button').forEach(btn => btn.remove());
 
         // 제목 및 내용 가져오고 이를 적용
         title.textContent = this.getAttribute('title');
@@ -76,15 +126,24 @@ export class PopupComponent extends HTMLElement {
         buttonsConfig.forEach(btnConfig => {
             const button = document.createElement('button');
             button.textContent = btnConfig.text;
+            btnConfig.class.forEach(eachClass => {
+                button.classList.add(eachClass);
+            });
             button.addEventListener('click', () => {
                 if (typeof window[btnConfig.action] === 'function') {
                     window[btnConfig.action]();
                 }
-                this.close();
+                //this.close();
             });
-            popup.appendChild(button);
+            buttonArea.appendChild(button);
         });
 
+        closeButton.addEventListener('click', () => {
+            console.log("클릭");
+            this.close();
+        });
+
+        closeButton.style.display = useCloseButton === "true" ? 'block' : 'none';
         overlay.style.display = this.getAttribute('opened') === "true" ? 'flex' : 'none';
     }
 
@@ -97,14 +156,13 @@ export class PopupComponent extends HTMLElement {
     }
 }
 
-customElements.define('popup-component', PopupComponent);
-
 
 /**
 html 부분
 title : 팝업 이름
 content : 팝업 내용
-button-config : 팝업 버튼 [{"text":"버튼 제목", "action":"버튼 함수"}, ...]
+close-button : "true" 팝업 닫기 버튼 보임, "false" 팝업 닫기 버튼 안 보임 (인잣갑이 없으면 false가 기본)
+button-config : 팝업 버튼 [{"text":"버튼 제목", "action":"버튼 함수", "class":["추가할 class", ...]}, ...]
 opened : "true" 팝업 보임, "false" 팝업 안 보임
 <popup-component title="Welcome!" content="Choose an option:" button-config='[{"text":"Confirm", "action":"confirmAction"}, {"text":"Cancel", "action":"cancelAction"}]', opened="false"></popup-component>
 
@@ -115,7 +173,12 @@ customElements.get('popup-component') || customElements.define('popup-component'
 const popup = document.querySelector('popup-component');
  
 버튼 함수 정의
-window.{버튼 함수 이름}} = () => {
+window.{버튼 함수 이름} = () => {
     ..함수 내용
+};
+
+예시
+window.confirmAction = () => {
+    popup.close();
 };
  */

@@ -1,7 +1,4 @@
 import {setCookie, getCookie, deleteCookie} from "./utility.js";
-import { PopupComponent } from './components/popupComponent.js';
-customElements.get('popup-component') || customElements.define('popup-component', PopupComponent);
-const popup = document.querySelector('popup-component');
 
 
 let deferredPrompt;

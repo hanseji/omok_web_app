@@ -35,8 +35,7 @@
         <div style="width: 100%; height: 144px; flex-shrink: 0;"></div>
     </div>
     <div class="d-grid gap-2">
-        <button id="openPopupButton" class="btn btn-primary fixed-button bottomButton" onclick="showPopup()">특정 구간 설명
-            보기</button>
+        <button id="openPopupButton" class="btn btn-primary fixed-button bottomButton">특정 구간 설명 보기</button>
     </div>
 
 
@@ -50,9 +49,7 @@
         </div>
     </div>
 
-    
-	<popup-component title="회원가입해주세요" content="무료로 사용할 수 있는 횟수인 5회를 넘었습니다. 회원가입하여 오목눈이를 무제한으로 사용해보세요" button-config='[{"text":"취소", "action":"confirmAction"}, {"text":"회원가입하기", "action":"cancelAction"}]', opened="true"></popup-component>
-
+	<popup-component id="motivateingSignUpPopup" title="회원가입해주세요" content="무료로 사용할 수 있는 횟수인 5회를 넘었습니다. 회원가입하여 오목눈이를 무제한으로 사용해보세요", close-button="true", button-config='[{"text":"홈으로 돌아가기", "action":"goToHome", "class":["btn-light", "btn"]}, {"text":"회원가입 하기", "action":"goToSignUp", "class":["btn-primary", "btn"]}]', opened="true"></popup-component>
 
     <!--팝업창-->
     <div class="overlay" id="overlay">
@@ -61,7 +58,7 @@
                 <h3 id="title" class="h3"
                     style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 80%;"><strong>특정
                         구간 설명 보기</strong></h3>
-                <button onclick="hidePopup()" type="button" class="btn-close" aria-label="Close"></button>
+                <button id="hidePopup" type="button" class="btn-close" aria-label="Close"></button>
             </div>
             <small>슬라이더를 움직여 영상에서 이해하기 어려운 단어나 문장이 있는 곳에서 멈추세요. 그 다음 버튼을 누르면 그 부분을 쉽게 설명해줍니다.</small>
             <div class="responsive-video" style="margin-top: 20px;">
@@ -71,14 +68,12 @@
             <input type="range" id="slider" min="0" max="100" value="0" style="width: 100%; margin-top: 12px;">
 
             <div class="d-grid gap-2">
-                <button id="closePopup" onclick="hidePopup(); fetchSummaryData();" class="btn btn-primary bottomButton" type="button"
-                    style="margin-top: 12px;">00분 00초의 설명 <!--fetchSummaryData();-->
-                    보기</button>
+                <button id="closePopup" class="btn btn-primary bottomButton" type="button" style="margin-top: 12px;">00분 00초의 설명 보기</button>
             </div>
 
         </div>
     </div>
-    <script src="/js/view-results-page.js"></script>
+    <script src="/js/view-results-page.js" type="module"></script>
 </body>
 
 </html>

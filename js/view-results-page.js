@@ -1,5 +1,9 @@
-import {setCookie, getCookie, deleteCookie} from "./utility";
+import {setCookie, getCookie, deleteCookie} from "./utility.js";
+import { PopupComponent } from './components/simplePopup.js';
 
+
+customElements.get('popup-component') || customElements.define('popup-component', PopupComponent);
+const motivateingSignUpPopup = document.getElementById('motivateingSignUpPopup');
 
 // Slider handling
 var slider = document.getElementById("slider");
@@ -170,17 +174,36 @@ function handleCookies() {
     } else if(cookieValue == null) {
         //회원가입 의무 있음
         console.log("회원가입 해");
-        const oldUrl = '/'; // 기본 URL
-        const changeUrl = `/signUp.html`; // 기본 URL로 사이트 접속 시 변경하고 싶은 URL
-        location.replace(changeUrl);
+        motivateingSignUpPopup.open();
+        //const changeUrl = `/signUp.html`;
+        //location.replace(changeUrl);
     } else if (cookieValue != null) {
         //이미 로그인한 사람으로 회원가입 의무 없음
         console.log("3");
     }
 }
 
+document.getElementById("hidePopup").addEventListener("click", () => {
+    hidePopup();
+});
+
+document.getElementById("closePopup").addEventListener("click", () => {
+    hidePopup();
+    fetchSummaryData();
+})
+
+openPopupButton.addEventListener('click', () => {
+    showPopup();
+});
+
 window.addEventListener('DOMContentLoaded', () => {
     CreateSpaceContent(null);
+    window.goToHome = () => {
+        location.replace("/index.html");
+    };
+    window.goToSignUp = () => {
+        location.replace("/signUp.html");
+    };
     handleSharedData();
 });
 
