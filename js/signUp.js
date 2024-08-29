@@ -1,7 +1,3 @@
-var videoID;
-var videoTime;
-handleSharedData();
-
 function signUpSubmit() {
     nameInput = document.getElementById("nameInput").value;
     telNumber = document.getElementById("telNumber").value;
@@ -19,14 +15,16 @@ function signUpSubmit() {
             if(data.signin) {
                 //회원가입 성공
                 set_cookie("ph_number", telNumber, 730);
-                location.replace(`/view-results-page.html`);
+                set_cookie("user_name", nameInput, 730);
+                location.replace(`/index.html`);
             } else {
                 console.log("이건");
                 //회원가입 실패
                 if(String(data.status) == "already exists") {
                     //회원 정보 이미 있음
+                    //메시지 뜨게
                     set_cookie("ph_number", telNumber, 730);
-                    location.replace(`/view-results-page.html`);
+                    location.replace(`/index.html`);
                     //window.open("https://omoknuni.netlify.app/login.js");
                 } else if(data.status == "no age or region or name") {
                     //정보 빠짐
@@ -56,11 +54,4 @@ function get_cookie(name) {
 //쿠키 삭제하는 함수
 function delete_cookie(name) {
     document.cookie = encodeURIComponent(name) + '=; expires=Thu, 01 JAN 1999 00:00:10 GMT';
-}
-
-// Function to handle the shared data
-function handleSharedData() {
-    const parsedUrl = new URL(window.location);
-    videoID = parsedUrl.searchParams.get('v');
-    videoTime = parsedUrl.searchParams.get('t');
 }

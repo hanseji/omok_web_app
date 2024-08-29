@@ -7,6 +7,8 @@ var openPopupButton = document.getElementById("openPopupButton");
 var youtubeID = ""
 var youtubeTime = 0
 
+var cookieValue;
+
 //바로 실행되는 함수
 
 // Iframe Player API를 비동기적으로 로드
@@ -110,8 +112,14 @@ function handleSharedData() {
 function fetchSummaryData() {
     showLoadingSpinner();
     console.log(youtubeTime);
-    console.log(`https://omok-w.fly.dev/youtube_summary/${youtubeID}?t=${youtubeTime}s`);
-    fetch(`https://omok-w.fly.dev/youtube_summary/${youtubeID}?t=${youtubeTime}s`)
+    var fetchUrl;
+    if(cookieValue == null) {
+        fetchUrl = `https://omok-w.fly.dev/youtube_summary/${youtubeID}?t=${youtubeTime}s`;
+    } else {
+        fetchUrl = `https://omok-w.fly.dev/youtube_summary/${youtubeID}?ph=${cookieValue}&t=${youtubeTime}s`;
+    }
+    console.log(fetchUrl);
+    fetch(fetchUrl)
         .then((response) => response.json())
         .then((data) => CreateSpaceContent(data.summary_result))
         .catch(error => {CreateSpaceContent('데이터를 가져오는 중 에러가 발생하였습니다\n에러코드 : ', error);hideLoadingSpinner();})
@@ -145,7 +153,7 @@ function CreateSpaceContent(textInput) {
 
 function handleCookies() {
     cookieValue = getCookie("ph_number");
-    freeTimeValue = getCookie("free_times");
+    var freeTimeValue = getCookie("free_times");
 
     if (cookieValue == null && freeTimeValue == null) {
         //처음 사용해보는 사람임
@@ -160,7 +168,7 @@ function handleCookies() {
         //회원가입 의무 있음
         console.log("회원가입 해");
         const oldUrl = '/'; // 기본 URL
-        const changeUrl = `/signUp.html?v=${youtubeID}?t=${youtubeTime}s`; // 기본 URL로 사이트 접속 시 변경하고 싶은 URL
+        const changeUrl = `/signUp.html`; // 기본 URL로 사이트 접속 시 변경하고 싶은 URL
         location.replace(changeUrl);
     } else if (cookieValue != null) {
         //이미 로그인한 사람으로 회원가입 의무 없음

@@ -5,9 +5,10 @@ function loginSubmit() {
     fetch(`https://omok-w.fly.dev/omok_login/${telNumber}?name=${nameInput}`)
         .then((response) => response.json())
         .then((data) => {
-            if(data.login == True) {
+            if(data.login) {
                 //로그인 성공
                 set_cookie("ph_number", telNumber, 730);
+                set_cookie("user_name", nameInput, 730);
                 window.close(); // 홈 화면 뜨게 
             } else {
                 //로그인 실패

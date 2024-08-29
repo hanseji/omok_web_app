@@ -77,9 +77,39 @@ window.onload = () => {
         installPrompt.style.display = 'block'; // Show for iOS
         installPromptOverlay.style.display = 'block'; // Show for iOS
     }
+    handleCookies();
 };
 
 
 window.addEventListener('DOMContentLoaded', () => {
     document.body.style.display = 'block'; // 문서가 준비되면 본문 보이기
 });
+
+function handleCookies() {
+    cookieValue = getCookie("ph_number");
+    var freeTimeValue = getCookie("free_times");
+
+    if (cookieValue != null) {
+        //이미 로그인한 사람으로 회원가입 의무 없음
+        document.getElementById("user").innerText = getCookie("user_name")
+    }
+}
+
+
+//쿠키 저장하는 함수
+function set_cookie(name, value, expireDays) {
+    var date = new Date();
+    date.setTime(date.getTime() + expireDays * 24 * 60 * 60 * 1000);
+    document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + ';expires=' + date.toUTCString() + ';path=/';
+}
+
+//쿠키 값 가져오는 함수
+function get_cookie(name) {
+    var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+    return value? value[2] : null;
+}
+
+//쿠키 삭제하는 함수
+function delete_cookie(name) {
+    document.cookie = encodeURIComponent(name) + '=; expires=Thu, 01 JAN 1999 00:00:10 GMT';
+}
