@@ -1,3 +1,6 @@
+import {setCookie, getCookie, deleteCookie} from "./utility";
+
+
 // Slider handling
 var slider = document.getElementById("slider");
 var sliderCheckButton = document.getElementById("closePopup");
@@ -184,22 +187,3 @@ window.addEventListener('DOMContentLoaded', () => {
 document.getElementById('closeApp').addEventListener('click', function () {
     window.open(`https://youtu.be/watch?v=${youtubeID}`, '_blank');
 });
-
-
-//쿠키 저장하는 함수
-function setCookie(name, value, expireDays) {
-    var date = new Date();
-    date.setTime(date.getTime() + expireDays * 24 * 60 * 60 * 1000);
-    document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + ';expires=' + date.toUTCString() + ';path=/';
-}
-
-//쿠키 값 가져오는 함수
-function getCookie(name) {
-    var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-    return value? value[2] : null;
-}
-
-//쿠키 삭제하는 함수
-function deleteCookie(name) {
-    document.cookie = encodeURIComponent(name) + '=; expires=Thu, 01 JAN 1999 00:00:10 GMT';
-}
