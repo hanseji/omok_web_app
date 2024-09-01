@@ -94,6 +94,6 @@ function handleCookies() {
 
     if (cookieValue != null) {
         //로그인을 했으면 사용자 정보 보여주기
-        document.getElementById("user").innerText = getCookie("user_name")
+        //document.getElementById("user").innerText = getCookie("user_name")
     }
 }

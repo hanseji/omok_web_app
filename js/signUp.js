@@ -1,4 +1,4 @@
-import {setCookie, getCookie, deleteCookie} from "./utility";
+import {setCookie, getCookie, deleteCookie} from "./utility.js";
 
 function signUpSubmit() {
     nameInput = document.getElementById("nameInput").value;
@@ -39,3 +39,11 @@ function signUpSubmit() {
         .catch(error => console.log("실패"))
         .finally(() => console.log("finally"));
 }
+
+document.getElementById('submitButton').addEventListener('click', () => {
+    signUpSubmit();
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+    //
+});
