@@ -111,7 +111,6 @@ function handleSharedData() {
     if (text) {
         //document.getElementById('content').innerText = `${text}`;
         document.getElementById('title').innerText = `${title}`;
-        handleCookies(); //쿠키 관리
         fetchSummaryData();
     }
 }
@@ -164,11 +163,13 @@ function handleCookies() {
 
     if (cookieValue == null && freeTimeValue == null) {
         //처음 사용해보는 사람임
+        handleSharedData();
         setCookie("free_times", 1, 30);
         console.log("1");
     } else if (cookieValue == null && Number(freeTimeValue) < 5) {
         //이전에 사용한 적이 있지만 5번 미만으로 사용한 사람임
         //아직 회원가입 의무 없음
+        handleSharedData();
         setCookie("free_times", String(Number(freeTimeValue) + 1), 30);
         console.log("2");
     } else if(cookieValue == null) {
@@ -179,6 +180,7 @@ function handleCookies() {
         //location.replace(changeUrl);
     } else if (cookieValue != null) {
         //이미 로그인한 사람으로 회원가입 의무 없음
+        handleSharedData();
         console.log("3");
     }
 }
@@ -197,6 +199,7 @@ openPopupButton.addEventListener('click', () => {
 });
 
 window.addEventListener('DOMContentLoaded', () => {
+    handleCookies(); //쿠키 관리
     CreateSpaceContent(null);
     window.goToHome = () => {
         location.replace("/index.html");
@@ -204,7 +207,6 @@ window.addEventListener('DOMContentLoaded', () => {
     window.goToSignUp = () => {
         location.replace("/signUp.html");
     };
-    handleSharedData();
 });
 
 document.getElementById('closeApp').addEventListener('click', function () {
