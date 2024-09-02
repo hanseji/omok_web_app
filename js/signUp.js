@@ -8,11 +8,11 @@ const errorPopup = document.getElementById('errorPopup');
 
 
 function signUpSubmit() {
-    nameInput = document.getElementById("nameInput").value;
-    telNumber = document.getElementById("telNumber").value;
-    isBorderline = document.getElementById("isBorderline").checked;
-    ages = document.getElementById("ageSelect").value;
-    region = document.getElementById("regionSelect").value;
+    var nameInput = document.getElementById("nameInput").value;
+    var telNumber = document.getElementById("telNumber").value;
+    var isBorderline = document.getElementById("isBorderline").checked;
+    var ages = document.getElementById("ageSelect").value;
+    var region = document.getElementById("regionSelect").value;
 
     console.log(nameInput);
     console.log(telNumber);
@@ -60,7 +60,7 @@ document.getElementById('submitButton').addEventListener('click', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     window.goToLogin = () => {
-        location.href = 'signUp.html';
+        location.href = 'login.html';
     };
     window.goToSignUp = () => {
         alreadySignUp.close();
