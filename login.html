@@ -1,17 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인 화면</title>
+    <!-- Bootstrap CSS CDN link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+    <!-- Bootstrap JS CDN script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .form-control,
+        .btn-primary {
+            border-radius: 10px;
+        }
+
+        .form-header {
+            text-align: center;
+            font-weight: bold;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+        .btn{
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+    </style>
 </head>
+
 <body>
-    이름
-    <input id="nameInput" type="text"><br>
-    전화번호
-    <input id="telNumber" type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"><br>
-    <input type="submit" onclick="loginSubmit()">
+    <div class="container">
+        <div class="form-header">로그인</div>
+        <form>
+            <div class="mb-3">
+                <label for="nameInput" class="form-label"><strong>이름</strong></label>
+                <input id="nameInput" type="text" class="form-control" placeholder="이름을 입력하세요">
+            </div>
+            <div class="mb-3">
+                <label for="telNumber" class="form-label"><strong>전화번호</strong></label>
+                <input id="telNumber" type="tel" class="form-control" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+                    placeholder="010-0000-0000">
+            </div>
+            <div class="d-grid gap-2">
+                <button id="submitButton" type="submit" class="btn btn-primary" style="margin-top: 20px;" onclick="loginSubmit()">로그인하기</button>
+            </div>
+        </form>
+    </div>
 
     <script src="js/login.js/"></script>
 </body>
+
 </html>

@@ -23,3 +23,7 @@ function loginSubmit() {
         .catch(error => console.log("실패"))
         .finally(() => console.log("finally"));
 }
+
+document.getElementById("submitButton").addEventListener('click', ()=>{
+    loginSubmit();
+});
