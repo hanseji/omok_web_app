@@ -4,6 +4,8 @@ import { PopupComponent } from './components/simplePopup.js';
 
 customElements.get('popup-component') || customElements.define('popup-component', PopupComponent);
 const alreadySignUp = document.getElementById('alreadySignUp');
+const errorPopup = document.getElementById('errorPopup');
+
 
 function signUpSubmit() {
     nameInput = document.getElementById("nameInput").value;
@@ -12,7 +14,11 @@ function signUpSubmit() {
     ages = document.getElementsByName("region").value;
     region = document.getElementsByName("region").value;
 
-    console.log(telNumber)
+    console.log(nameInput);
+    console.log(telNumber);
+    console.log(isBorderline);
+    console.log(ages);
+    console.log(region);
 
 
     fetch(`https://omok-w.fly.dev/omok_signin/${telNumber}?name=${nameInput}&is_me=${isBorderline}&age=${ages}&region=${region}`)
@@ -20,6 +26,7 @@ function signUpSubmit() {
         .then((data) => {
             console.log(data)
             if(data.signin) {
+                console.log("성공");
                 //회원가입 성공
                 setCookie("ph_number", telNumber, 730);
                 setCookie("user_name", nameInput, 730);
@@ -37,12 +44,13 @@ function signUpSubmit() {
                 } else if(data.status == "no age or region or name") {
                     //정보 빠짐
                 } else {
+                    errorPopup.open();
                     console.log(data.status);//회원 가입 실패
                 }
             }
             window.close();
         }) // 홈 화면 뜨게 코드 바꾸기
-        .catch(error => console.log("실패"))
+        .catch(error => console.log(error))
         .finally(() => console.log("finally"));
 }
 
@@ -57,4 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.goToSignUp = () => {
         alreadySignUp.close();
     };
+    window.closeErrorPopup = () => {
+        errorPopup.close();
+    }
 });

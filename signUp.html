@@ -56,7 +56,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="telNumber" class="form-label"><strong>전화번호</strong></label>
-                    <input id="telNumber" type="tel" class="form-control" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="숫자만 입력하세요">
+                    <input id="telNumber" type="tel" class="form-control" pattern="[0-9]{11}" placeholder="숫자만 입력하세요">
                 </div>
                 <div class="mb-3">
                     <label for="ageSelect" class="form-label"><strong>나이</strong></label>
@@ -92,7 +92,7 @@
 
 
 	<popup-component id="alreadySignUp" title="이미 존재하는 회원입니다." content="처음 회원가입을 한다면 이름 및 전화번호를 확인해주세요. 이미 회원가입을 한 경우라면 로그임을 진행해주세요", close-button="true", button-config='[{"text":"이름, 전화번호 확인하기", "action":"goToSignUp", "class":["btn-light", "btn"]}, {"text":"로그인하기", "action":"goToLogin", "class":["btn-primary", "btn"]}]', opened="false"></popup-component>
-	<popup-component id="alreadySignUp" title="회원가입이 실패하였습니다." content="잠시 뒤에 다시 한 번 시도해주세요", close-button="true", button-config='[{"text":"닫기", "action":"closeErrorPopup", "class":["btn-light", "btn"]}]', opened="false"></popup-component>
+	<popup-component id="errorPopup" title="회원가입이 실패하였습니다." content="잠시 뒤에 다시 한 번 시도해주세요", close-button="true", button-config='[{"text":"닫기", "action":"closeErrorPopup", "class":["btn-light", "btn"]}]', opened="false"></popup-component>
 
     
     <script src="/js/signUp.js" type="module"></script>
