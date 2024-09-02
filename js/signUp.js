@@ -11,8 +11,8 @@ function signUpSubmit() {
     nameInput = document.getElementById("nameInput").value;
     telNumber = document.getElementById("telNumber").value;
     isBorderline = document.getElementById("isBorderline").checked;
-    ages = document.getElementsByName("region").value;
-    region = document.getElementsByName("region").value;
+    ages = document.getElementById("ageSelect").value;
+    region = document.getElementById("regionSelect").value;
 
     console.log(nameInput);
     console.log(telNumber);
