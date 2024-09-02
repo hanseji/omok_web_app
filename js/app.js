@@ -1,6 +1,5 @@
 import {setCookie, getCookie, deleteCookie} from "./utility.js";
 
-
 let deferredPrompt;
 const installPromptOverlay = document.getElementById('overlay');
 const installPrompt = document.getElementById('installPrompt');
