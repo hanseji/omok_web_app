@@ -1,4 +1,9 @@
 import {setCookie, getCookie, deleteCookie} from "./utility.js";
+import { PopupComponent } from './components/simplePopup.js';
+
+
+customElements.get('popup-component') || customElements.define('popup-component', PopupComponent);
+const alreadySignUp = document.getElementById('alreadySignUp');
 
 function signUpSubmit() {
     nameInput = document.getElementById("nameInput").value;
@@ -25,8 +30,9 @@ function signUpSubmit() {
                 if(String(data.status) == "already exists") {
                     //회원 정보 이미 있음
                     //메시지 뜨게
-                    setCookie("ph_number", telNumber, 730);
-                    location.replace(`/index.html`);
+                    alreadySignUp.open();
+                    //setCookie("ph_number", telNumber, 730);
+                    //location.replace(`/index.html`);
                     //window.open("https://omoknuni.netlify.app/login.js");
                 } else if(data.status == "no age or region or name") {
                     //정보 빠짐
@@ -45,5 +51,10 @@ document.getElementById('submitButton').addEventListener('click', () => {
 })
 
 document.addEventListener('DOMContentLoaded', () => {
-    //
+    window.goToLogin = () => {
+        location.href = 'signUp.html';
+    };
+    window.goToSignUp = () => {
+        alreadySignUp.close();
+    };
 });
