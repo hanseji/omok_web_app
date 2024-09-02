@@ -1,4 +1,7 @@
 import {setCookie, getCookie, deleteCookie} from "./utility.js";
+import { checkClipboardForYoutubeLink } from './clipboardModule.js';
+
+checkClipboardForYoutubeLink();
 
 let deferredPrompt;
 const installPromptOverlay = document.getElementById('overlay');
@@ -68,7 +71,7 @@ function isInStandaloneMode() {
 
 window.onload = () => {
     if (isIos() && !isInStandaloneMode()) {
-        iosInstallInfo = `
+        const iosInstallInfo = `
         <div id="iosInstallPrompt">
 			<p>아래 순서를 따라해 홈 화면에 앱이 설치하세요.</p>
 			<p>1. 부라우저 하단 <strong>공유 버튼</strong> <img src="images/share_ios-512.png" alt="Share Icon" style="height: 18px; width: 18px; margin-bottom: 0.2rem;"> 누르기</p>
