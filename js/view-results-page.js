@@ -1,4 +1,4 @@
-import {setCookie, getCookie, deleteCookie, isUserLogin} from "./utility.js";
+import { setCookie, getCookie, deleteCookie, isUserLogin } from "./utility.js";
 import { PopupComponent } from './components/simplePopup.js';
 
 
@@ -17,14 +17,14 @@ var youtubeTime = 0
 var cookieValue;
 
 //바로 실행되는 함수
-function initialYoutube(){
-// Iframe Player API를 비동기적으로 로드
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-console.log(tag);
-console.log(firstScriptTag);
+function initialYoutube() {
+    // Iframe Player API를 비동기적으로 로드
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    console.log(tag);
+    console.log(firstScriptTag);
 }
 // 3. API 코드를 다운로드 받은 다음에 <iframe>을 생성하는 기능 (youtube player도 더불어)
 var player;
@@ -52,7 +52,7 @@ function onYouTubeIframeAPIReady() {
         event.target.mute();
         event.target.playVideo();
     }
-    
+
     // 5. API는 플레이어의 상태가 변화될 때 아래의 function을 불러올 것이다.
     //    이 function은 비디오가 재생되고 있을 때를 가르킨다.(state=1)
     function onPlayerStateChange(event) {
@@ -68,12 +68,12 @@ function onYouTubeIframeAPIReady() {
 
 
 slider.oninput = function () {
-    sliderCheckButton.innerText = `${String(Math.floor(this.value/60)).padStart(2, "0")}분 ${String(this.value%60).padStart(2, "0")}초의 설명 보기`;
+    sliderCheckButton.innerText = `${String(Math.floor(this.value / 60)).padStart(2, "0")}분 ${String(this.value % 60).padStart(2, "0")}초의 설명 보기`;
     youtubeTime = this.value
 }
 
 slider.addEventListener('change', function () {
-    player.seekTo(youtubeTime,true); 
+    player.seekTo(youtubeTime, true);
 });
 
 function showPopup() {
@@ -112,6 +112,7 @@ function handleSharedData() {
     if (text) {
         //document.getElementById('content').innerText = `${text}`;
         document.getElementById('title').innerText = `${title}`;
+        /**@TODO 주석 지우기 */
         //fetchSummaryData();
     }
 }
@@ -120,7 +121,7 @@ function fetchSummaryData() {
     showLoadingSpinner();
     console.log(youtubeTime);
     var fetchUrl;
-    if(!isUserLogin()) {
+    if (!isUserLogin()) {
         fetchUrl = `https://omok-w.fly.dev/youtube_summary/${youtubeID}?t=${youtubeTime}s`;
     } else {
         fetchUrl = `https://omok-w.fly.dev/youtube_summary/${youtubeID}?ph=${cookieValue}&t=${youtubeTime}s`;
@@ -129,7 +130,7 @@ function fetchSummaryData() {
     fetch(fetchUrl)
         .then((response) => response.json())
         .then((data) => CreateSpaceContent(data.summary_result))
-        .catch(error => {CreateSpaceContent('데이터를 가져오는 중 에러가 발생하였습니다\n에러코드 : ', error);hideLoadingSpinner();})
+        .catch(error => { CreateSpaceContent('데이터를 가져오는 중 에러가 발생하였습니다\n에러코드 : ', error); hideLoadingSpinner(); })
         .finally(() => hideLoadingSpinner());
 }
 
@@ -145,8 +146,8 @@ function hideLoadingSpinner() {
 
 function CreateSpaceContent(textInput) {
     var contentElement = document.getElementById("content");
-    if (textInput == null){var text = contentElement.innerText;}
-    else{var text = textInput}
+    if (textInput == null) { var text = contentElement.innerText; }
+    else { var text = textInput }
     var lines = text.split('\n');
     var formattedText = lines.map(function (line) {
         if (line.match(/^\d+\./)) { // Checks if the line starts with number followed by dot
@@ -173,7 +174,7 @@ function handleCookies() {
         handleSharedData();
         setCookie("free_times", String(Number(freeTimeValue) + 1), 30);
         console.log("2");
-    } else if(cookieValue == null) {
+    } else if (cookieValue == null) {
         //회원가입 의무 있음
         console.log("회원가입 해");
         motivateingSignUpPopup.open();
