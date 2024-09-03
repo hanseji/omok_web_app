@@ -20,7 +20,6 @@ var cookieValue;
 
 // Iframe Player API를 비동기적으로 로드
 var tag = document.createElement('script');
-
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
@@ -111,6 +110,12 @@ function handleSharedData() {
     if (text) {
         //document.getElementById('content').innerText = `${text}`;
         document.getElementById('title').innerText = `${title}`;
+
+        // YouTube API가 이미 로드되었는지 확인 후 플레이어 초기화
+        if (typeof YT !== 'undefined' && YT && YT.Player) {
+            onYouTubeIframeAPIReady();
+        }
+        
         fetchSummaryData();
     }
 }
@@ -183,7 +188,6 @@ function handleCookies() {
         handleSharedData();
         console.log("3");
     }
-    onYouTubeIframeAPIReady();
 }
 
 document.getElementById("hidePopup").addEventListener("click", () => {
