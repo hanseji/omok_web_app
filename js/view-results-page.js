@@ -17,13 +17,15 @@ var youtubeTime = 0
 var cookieValue;
 
 //바로 실행되는 함수
-
+function initialYoutube(){
 // Iframe Player API를 비동기적으로 로드
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
+console.log(tag);
+console.log(firstScriptTag);
+}
 // 3. API 코드를 다운로드 받은 다음에 <iframe>을 생성하는 기능 (youtube player도 더불어)
 var player;
 function onYouTubeIframeAPIReady() {
@@ -110,7 +112,7 @@ function handleSharedData() {
     if (text) {
         //document.getElementById('content').innerText = `${text}`;
         document.getElementById('title').innerText = `${title}`;
-        fetchSummaryData();
+        //fetchSummaryData();
     }
 }
 
@@ -198,6 +200,7 @@ openPopupButton.addEventListener('click', () => {
 });
 
 window.addEventListener('DOMContentLoaded', () => {
+    initialYoutube();
     handleCookies(); //쿠키 관리
     CreateSpaceContent(null);
     window.goToHome = () => {
