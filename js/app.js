@@ -9,6 +9,8 @@ const installPrompt = document.getElementById('installPrompt');
 const installButton = document.getElementById('installButton');
 const installButtonInInfo = document.getElementById('installButtonInInfo');
 const installMessage = document.getElementById('installMessage');
+const signUpButton = document.getElementById('signUpButton');
+const loginButton = document.getElementById('loginButton');
 
 window.addEventListener('beforeinstallprompt', (e) => {
     // Prevent the mini-infobar from appearing on mobile
@@ -17,11 +19,15 @@ window.addEventListener('beforeinstallprompt', (e) => {
     deferredPrompt = e;
     // Only show the install button for Android devices
     if (!isIos()) {
-        installButton.style.display = 'block';
         installButtonInInfo.style.display = 'block';
-        installMessage.innerHTML = "빠르고 쉽게 이용하려면 홈 화면에 이 앱을 설치하세요. 아래 버튼을 누르면 앱이 설치됩니다.";
-        installPrompt.style.display = 'block';
-        installPromptOverlay.style.display = 'block';
+        loginButton.style.display = 'none';
+        signUpButton.style.display = 'none';
+
+        // installButton.style.display = 'block';
+        // installButtonInInfo.style.display = 'block';
+        // installMessage.innerHTML = "빠르고 쉽게 이용하려면 홈 화면에 이 앱을 설치하세요. 아래 버튼을 누르면 앱이 설치됩니다.";
+        // installPrompt.style.display = 'block';
+        // installPromptOverlay.style.display = 'block';
     }
 });
 
@@ -81,6 +87,8 @@ window.onload = () => {
         installMessage.innerHTML = iosInstallInfo;
         installPrompt.style.display = 'block'; // Show for iOS
         installPromptOverlay.style.display = 'block'; // Show for iOS
+    } else if(!isIos && !isInStandaloneMode()) {
+        //아이폰이 아니고 설치를 하지 않았을 때
     }
     handleCookies();
 };
@@ -91,8 +99,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     //이미 로그인 상태라면 로그인, 회원가입 버튼 가리기
     if(isUserLogin()) {
-        document.getElementById("signUpButton").style.display = 'none';
-        document.getElementById("loginButton").style.display = 'none';
+        signUpButton.style.display = 'none';
+        loginButton.classList.add("disabled");
+        loginButton.innerText = "로그인 완료";
     }
 });
 
