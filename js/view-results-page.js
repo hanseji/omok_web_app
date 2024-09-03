@@ -1,4 +1,4 @@
-import {setCookie, getCookie, deleteCookie} from "./utility.js";
+import {setCookie, getCookie, deleteCookie, isUserLogin} from "./utility.js";
 import { PopupComponent } from './components/simplePopup.js';
 
 
@@ -119,7 +119,7 @@ function fetchSummaryData() {
     showLoadingSpinner();
     console.log(youtubeTime);
     var fetchUrl;
-    if(cookieValue == null) {
+    if(!isUserLogin()) {
         fetchUrl = `https://omok-w.fly.dev/youtube_summary/${youtubeID}?t=${youtubeTime}s`;
     } else {
         fetchUrl = `https://omok-w.fly.dev/youtube_summary/${youtubeID}?ph=${cookieValue}&t=${youtubeTime}s`;

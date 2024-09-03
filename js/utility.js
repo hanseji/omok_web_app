@@ -1,4 +1,4 @@
-export {setCookie, getCookie, deleteCookie}
+export {setCookie, getCookie, deleteCookie,isUserLogin}
 
 /**
  * 제목, 내용, 저장 기간을 입력받아 쿠키를 저장
@@ -29,4 +29,16 @@ function getCookie(name) {
 //쿠키 삭제하는 함수
 function deleteCookie(name) {
     document.cookie = encodeURIComponent(name) + '=; expires=Thu, 01 JAN 1999 00:00:10 GMT';
+}
+
+/**
+ * 유저가 현재 로그인 상태인지 확인
+ * @returns {Boolean} 로그인 상태면 true 아니면 false
+ */
+function isUserLogin() {
+    if (getCookie("ph_number")) {
+        return true;
+    } else {
+        return false;
+    }
 }

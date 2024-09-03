@@ -1,4 +1,4 @@
-import {setCookie, getCookie, deleteCookie} from "./utility.js";
+import {setCookie, getCookie, deleteCookie, isUserLogin} from "./utility.js";
 import { checkClipboardForYoutubeLink } from './clipboardModule.js';
 
 checkClipboardForYoutubeLink();
@@ -88,6 +88,12 @@ window.onload = () => {
 
 window.addEventListener('DOMContentLoaded', () => {
     document.body.style.display = 'block'; // 문서가 준비되면 본문 보이기
+
+    //이미 로그인 상태라면 로그인, 회원가입 버튼 가리기
+    if(isUserLogin()) {
+        document.getElementById("signUpButton").style.display = 'none';
+        document.getElementById("loginButton").style.display = 'none';
+    }
 });
 
 function handleCookies() {
