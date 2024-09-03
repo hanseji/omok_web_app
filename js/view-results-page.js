@@ -110,12 +110,6 @@ function handleSharedData() {
     if (text) {
         //document.getElementById('content').innerText = `${text}`;
         document.getElementById('title').innerText = `${title}`;
-
-        // YouTube API가 이미 로드되었는지 확인 후 플레이어 초기화
-        if (typeof YT !== 'undefined' && YT && YT.Player) {
-            onYouTubeIframeAPIReady();
-        }
-
         fetchSummaryData();
     }
 }
