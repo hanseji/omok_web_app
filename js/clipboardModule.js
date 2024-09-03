@@ -17,7 +17,7 @@ function isInStandaloneMode() {
 
 export async function checkClipboardForYoutubeLink() {
   try {
-    if (isIos && isInStandaloneMode) {
+    if (isIos() && isInStandaloneMode()) {
       // 클립보드 내용을 읽기
       const text = await navigator.clipboard.readText();
 
