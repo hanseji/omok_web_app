@@ -28,7 +28,8 @@ function initialYoutube() {
 }
 // 3. API 코드를 다운로드 받은 다음에 <iframe>을 생성하는 기능 (youtube player도 더불어)
 var player;
-function onYouTubeIframeAPIReady() {
+window.onYouTubeIframeAPIReady = function() {
+    console.log("됨?");
     player = new YT.Player('youtubeVideo', {
         height: '360',  //변경가능-영상 높이
         width: '640',  //변경가능-영상 너비
@@ -111,6 +112,7 @@ function handleSharedData() {
 
     if (text) {
         //document.getElementById('content').innerText = `${text}`;
+        initialYoutube();
         document.getElementById('title').innerText = `${title}`;
         /**@TODO 주석 지우기 */
         //fetchSummaryData();
@@ -193,7 +195,8 @@ document.getElementById("hidePopup").addEventListener("click", () => {
 
 document.getElementById("closePopup").addEventListener("click", () => {
     hidePopup();
-    fetchSummaryData();
+    /**@TOOD 주석 지우기 */
+    //fetchSummaryData();
 })
 
 openPopupButton.addEventListener('click', () => {
@@ -201,7 +204,7 @@ openPopupButton.addEventListener('click', () => {
 });
 
 window.addEventListener('DOMContentLoaded', () => {
-    initialYoutube();
+    //initialYoutube();
     handleCookies(); //쿠키 관리
     CreateSpaceContent(null);
     window.goToHome = () => {
