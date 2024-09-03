@@ -11,6 +11,7 @@ const installButtonInInfo = document.getElementById('installButtonInInfo');
 const installMessage = document.getElementById('installMessage');
 const signUpButton = document.getElementById('signUpButton');
 const loginButton = document.getElementById('loginButton');
+const giveFeeback = document.getElementById('giveFeedback');
 
 window.addEventListener('beforeinstallprompt', (e) => {
     // Prevent the mini-infobar from appearing on mobile
@@ -30,6 +31,10 @@ window.addEventListener('beforeinstallprompt', (e) => {
         // installPromptOverlay.style.display = 'block';
     }
 });
+
+giveFeeback.addEventListener('click', () => {
+    window.open("https://open.kakao.com/o/ggowSOLg");
+})
 
 installButton.addEventListener('click', async () => {
     // Show the install prompt
