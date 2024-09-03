@@ -44,26 +44,26 @@ function onYouTubeIframeAPIReady() {
             'onStateChange': onPlayerStateChange //onStateChange 상태일 때 작동하는 function이름
         }
     });
+    // 4. API는 비디오 플레이어가 준비되면 아래의 function을 불러올 것이다.
+    function onPlayerReady(event) {
+        slider.setAttribute("max", player.getDuration())
+        event.target.mute();
+        event.target.playVideo();
+    }
+    
+    // 5. API는 플레이어의 상태가 변화될 때 아래의 function을 불러올 것이다.
+    //    이 function은 비디오가 재생되고 있을 때를 가르킨다.(state=1)
+    function onPlayerStateChange(event) {
+        // setTimeout(stopVideo(), 5000);
+        // if (event.data == YT.PlayerState.PLAYING) {
+        //     setTimeout(stopVideo, 3000);
+        // }
+    }
+    function stopVideo() {
+        player.stopVideo();
+    }
 }
 
-// 4. API는 비디오 플레이어가 준비되면 아래의 function을 불러올 것이다.
-function onPlayerReady(event) {
-    slider.setAttribute("max", player.getDuration())
-    event.target.mute();
-    event.target.playVideo();
-}
-
-// 5. API는 플레이어의 상태가 변화될 때 아래의 function을 불러올 것이다.
-//    이 function은 비디오가 재생되고 있을 때를 가르킨다.(state=1)
-function onPlayerStateChange(event) {
-    // setTimeout(stopVideo(), 5000);
-    // if (event.data == YT.PlayerState.PLAYING) {
-    //     setTimeout(stopVideo, 3000);
-    // }
-}
-function stopVideo() {
-    player.stopVideo();
-}
 
 slider.oninput = function () {
     sliderCheckButton.innerText = `${String(Math.floor(this.value/60)).padStart(2, "0")}분 ${String(this.value%60).padStart(2, "0")}초의 설명 보기`;
@@ -115,7 +115,7 @@ function handleSharedData() {
         if (typeof YT !== 'undefined' && YT && YT.Player) {
             onYouTubeIframeAPIReady();
         }
-        
+
         fetchSummaryData();
     }
 }
