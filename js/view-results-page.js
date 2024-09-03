@@ -183,6 +183,7 @@ function handleCookies() {
         handleSharedData();
         console.log("3");
     }
+    onYouTubeIframeAPIReady();
 }
 
 document.getElementById("hidePopup").addEventListener("click", () => {
