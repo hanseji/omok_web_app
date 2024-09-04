@@ -129,7 +129,7 @@ window.addEventListener('DOMContentLoaded', () => {
     //이미 로그인 상태라면 로그인, 회원가입 버튼 가리기
     if (isUserLogin()) {
         signUpButton.style.display = 'none';
-        signUpButton.style.display = 'none';
+        loginButton.style.display = 'none';
     }
 });
 
