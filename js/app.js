@@ -1,4 +1,4 @@
-import {setCookie, getCookie, deleteCookie, isUserLogin} from "./utility.js";
+import { setCookie, getCookie, deleteCookie, isUserLogin } from "./utility.js";
 import { checkClipboardForYoutubeLink } from './clipboardModule.js';
 
 checkClipboardForYoutubeLink();
@@ -12,6 +12,7 @@ const installMessage = document.getElementById('installMessage');
 const signUpButton = document.getElementById('signUpButton');
 const loginButton = document.getElementById('loginButton');
 const giveFeeback = document.getElementById('giveFeedback');
+const logoutButton = document.getElementById('logoutButton');
 
 window.addEventListener('beforeinstallprompt', (e) => {
     // Prevent the mini-infobar from appearing on mobile
@@ -31,6 +32,19 @@ window.addEventListener('beforeinstallprompt', (e) => {
         // installPromptOverlay.style.display = 'block';
     }
 });
+
+signUpButton.addEventListener('click', () => {
+    location.href = "signUp.html";
+})
+
+loginButton.addEventListener('click', () => {
+    location.href = "login.html";
+})
+
+logoutButton.addEventListener('click', () => {
+    deleteCookie('ph_number');
+    location.href = '#';
+})
 
 giveFeeback.addEventListener('click', () => {
     window.open("https://open.kakao.com/o/ggowSOLg");
@@ -66,7 +80,7 @@ installButtonInInfo.addEventListener('click', async () => {
     deferredPrompt = null;
 });
 
-document.getElementById("closePopup").addEventListener('click', ()=> {
+document.getElementById("closePopup").addEventListener('click', () => {
     installPrompt.style.display = 'none';
     installPromptOverlay.style.display = 'none';
 });
@@ -92,8 +106,18 @@ window.onload = () => {
         installMessage.innerHTML = iosInstallInfo;
         installPrompt.style.display = 'block'; // Show for iOS
         installPromptOverlay.style.display = 'block'; // Show for iOS
-    } else if(!isIos && !isInStandaloneMode()) {
+    } else if (!isIos && !isInStandaloneMode()) {
         //아이폰이 아니고 설치를 하지 않았을 때
+    } else if (isIos && isInStandaloneMode()) {
+        //아이폰이고 설치를 했을 때
+        if (isUserLogin()) {
+            logoutButton.style.display = 'block';
+        }
+    } else {
+        //아이폰이 아니고 설치를 했을 때
+        if (isUserLogin()) {
+            logoutButton.style.display = 'block';
+        }
     }
     handleCookies();
 };
@@ -103,10 +127,9 @@ window.addEventListener('DOMContentLoaded', () => {
     document.body.style.display = 'block'; // 문서가 준비되면 본문 보이기
 
     //이미 로그인 상태라면 로그인, 회원가입 버튼 가리기
-    if(isUserLogin()) {
+    if (isUserLogin()) {
         signUpButton.style.display = 'none';
-        loginButton.classList.add("disabled");
-        loginButton.innerText = "로그인 완료";
+        signUpButton.style.display = 'none';
     }
 });
 
