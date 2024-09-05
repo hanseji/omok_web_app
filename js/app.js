@@ -35,20 +35,20 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 signUpButton.addEventListener('click', () => {
     location.href = "signUp.html";
-})
+});
 
 loginButton.addEventListener('click', () => {
     location.href = "login.html";
-})
+});
 
 logoutButton.addEventListener('click', () => {
     deleteCookie('ph_number');
     location.href = '#';
-})
+});
 
 giveFeeback.addEventListener('click', () => {
     window.open("https://open.kakao.com/o/ggowSOLg");
-})
+});
 
 installButton.addEventListener('click', async () => {
     // Show the install prompt
