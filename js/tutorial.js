@@ -150,6 +150,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     if (window.matchMedia('(display-mode: standalone)').matches) {
         //이미 설치 되어 있다면 설치 안내 튜토리얼 건너뛰기
         slides.shift();
+        currentSlide(0);
     }
 
     // Initialize dots on page load
