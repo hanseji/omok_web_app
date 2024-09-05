@@ -20,6 +20,7 @@ const signUpButton = document.getElementById('signUpButton');
 const loginButton = document.getElementById('loginButton');
 const giveFeeback = document.getElementById('giveFeedback');
 const logoutButton = document.getElementById('logoutButton');
+const tutorialButton = document.getElementById('tutorialButton');
 
 window.addEventListener('beforeinstallprompt', (e) => {
     // Prevent the mini-infobar from appearing on mobile
@@ -39,6 +40,10 @@ window.addEventListener('beforeinstallprompt', (e) => {
         // installPromptOverlay.style.display = 'block';
     }
 });
+
+tutorialButton.addEventListener('click', () => {
+    location.href = "tutorial.html?isStart=0";
+})
 
 signUpButton.addEventListener('click', () => {
     location.href = "signUp.html";

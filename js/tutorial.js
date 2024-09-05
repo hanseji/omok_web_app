@@ -1,10 +1,19 @@
-
+import { setCookie, getCookie, deleteCookie, isUserLogin } from "./utility.js";
 let currentIndex = 0;
-const slides = document.querySelectorAll('.slide');
+let isStart;
+let slides = document.querySelectorAll('.slide');
 const dotsContainer = document.getElementById('dots');
 const nextButton = document.getElementById('nextButton');
 const prevButton = document.getElementById('prevButton');
 const goToWebsiteButton = document.getElementById('goToWebsiteButton');
+const returnButton = document.getElementById('returnButton');
+
+// Function to handle the shared data
+function handleSharedData() {
+    const parsedUrl = new URL(window.location);
+    isStart = String(parsedUrl.searchParams.get('isStart'));
+}
+
 
 // Function to create dots dynamically
 function createDots() {
@@ -30,7 +39,12 @@ function updateDots() {
 
 function nextSlide() {
     if (currentIndex + 1 == slides.length - 1) {
-        goToWebsiteButton.innerText = "시작하기"
+        //만약 "사용 방법" 버튼을 통해 들어오면 버튼 설명을 "완료"로 변경, 아니면 "시작하기"로 변경
+        if (isStart == "1") {
+            goToWebsiteButton.innerText = "시작하기"
+        } else {
+            goToWebsiteButton.innerText = "완료"
+        }
     }
     if (currentIndex + 1 <= slides.length - 1) {
         const currentSlide = slides[currentIndex];
@@ -54,7 +68,7 @@ function prevSlide() {
         prevSlide.classList.remove('left'); // Prepare the previous slide to come in from the left
         prevSlide.classList.add('active'); // Make it active
         updateDots();
-        goToWebsiteButton.innerText = "다음으로"
+        goToWebsiteButton.innerText = "다음으로";
     }
 }
 
@@ -112,13 +126,33 @@ goToWebsiteButton.addEventListener('click', () => {
     if (goToWebsiteButton.innerText == "다음으로") {
         nextSlide();
     } else {
-        window.location.href = 'https://www.example.com'; // Replace with your desired URL
+        /**@TODO 아래 활성화하면 처음 사용자가 아님이 기록됨 */
+        //setCookie("isStart", "1", 730);
+        if (isStart == "1") {
+            window.location.replace('index.html'); // Replace with your desired URL
+        } else {
+            window.location.replace('index.html'); // Replace with your desired URL
+        }
     }
 });
 
+returnButton.addEventListener('click', () => {
+    window.location.replace("index.html")
+})
+
 document.addEventListener("DOMContentLoaded", (event) => {
+    if (isStart != "1") {
+        //만약 "사용 방법" 버튼을 통해 들어오면 돌아가기 버튼 활성화
+        returnButton.style.display = "block";
+    }
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+        //이미 설치 되어 있다면 설치 안내 튜토리얼 건너뛰기
+        slides.shift();
+    }
+
     // Initialize dots on page load
     createDots();
+    
     if (window.innerWidth >= 600) {
         nextButton.style.display = "block";
         prevButton.style.display = "block";
