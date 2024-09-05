@@ -1,8 +1,8 @@
-import {setCookie, getCookie, deleteCookie} from "./utility.js";
+import { setCookie, getCookie, deleteCookie, isUserLogin } from "./utility.js";
 
 function loginSubmit() {
-    nameInput = document.getElementById("nameInput").value;
-    telNumber = document.getElementById("telNumber").value;
+    var nameInput = document.getElementById("nameInput").value;
+    var telNumber = document.getElementById("telNumber").value;
 
     fetch(`https://omok-w.fly.dev/omok_login/${telNumber}?name=${nameInput}`)
         .then((response) => response.json())
@@ -25,5 +25,6 @@ function loginSubmit() {
 }
 
 document.getElementById("submitButton").addEventListener('click', ()=>{
+    console.log(location.href);
     loginSubmit();
 });
