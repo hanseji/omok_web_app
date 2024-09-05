@@ -2,6 +2,9 @@ import { setCookie, getCookie, deleteCookie, isUserLogin } from "./utility.js";
 import { checkClipboardForYoutubeLink } from './clipboardModule.js';
 
 //처음 앱을 실행할 때(웹이 아닌 앱 환경으로)
+console.log(('standalone' in window.navigator) );
+console.log(window.matchMedia('(display-mode: standalone)').matches);
+console.log(getCookie('isStart') == null);
 if (window.matchMedia('(display-mode: standalone)').matches && getCookie('isStart') == null) {
     //튜토리얼 시작
     location.href = "tutorial.html";
