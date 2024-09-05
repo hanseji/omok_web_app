@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
     if (isInStandaloneMode()) {
         //이미 설치 되어 있다면 설치 안내 튜토리얼 건너뛰기
-        slides.shift();
+        slides[0].remove();
         currentSlide(0);
         console.log(slides);
     }
