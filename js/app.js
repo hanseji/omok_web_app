@@ -1,6 +1,8 @@
 import { setCookie, getCookie, deleteCookie, isUserLogin } from "./utility.js";
 import { checkClipboardForYoutubeLink } from './clipboardModule.js';
 
+var userMode;
+
 handleSharedData();
 
 console.log(userMode == "app");
@@ -32,8 +34,7 @@ const tutorialButton = document.getElementById('tutorialButton');
 // Function to handle the shared data
 function handleSharedData() {
     const parsedUrl = new URL(window.location);
-    isStart = String(parsedUrl.searchParams.get('isStart'));
-    userMode = String(parsedUrl.searchParams.get('userMode'));
+    userMode = String(parsedUrl.searchParams.get('userMode')) || "null";
 }
 
 window.addEventListener('beforeinstallprompt', (e) => {
