@@ -134,6 +134,16 @@ returnButton.addEventListener('click', () => {
     window.location.replace("index.html")
 })
 
+function isInStandaloneMode() {
+    return window.matchMedia('(display-mode: standalone)').matches || (window.navigator.standalone);
+}
+// Function to handle the shared data
+function handleSharedData() {
+    const parsedUrl = new URL(window.location);
+    isStart = parsedUrl.searchParams.get('isStart');
+}
+
+
 document.addEventListener("DOMContentLoaded", (event) => {
     handleSharedData();
     
@@ -141,7 +151,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         //만약 "사용 방법" 버튼을 통해 들어오면 돌아가기 버튼 활성화
         returnButton.style.display = "block";
     }
-    if (window.matchMedia('(display-mode: standalone)').matches) {
+    if (isInStandaloneMode()) {
         //이미 설치 되어 있다면 설치 안내 튜토리얼 건너뛰기
         slides.shift();
         currentSlide(0);
