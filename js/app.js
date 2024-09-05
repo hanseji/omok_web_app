@@ -10,6 +10,7 @@ console.log(userMode == "app");
 //처음 앱을 실행할 때(웹이 아닌 앱 환경으로)
 console.log(('standalone' in window.navigator) );
 console.log(window.matchMedia('(display-mode: standalone)').matches);
+console.log(window.navigator.standalone);
 console.log(getCookie('isStart') == null);
 if (window.matchMedia('(display-mode: standalone)').matches && getCookie('isStart') == null) {
     //튜토리얼 시작
@@ -31,9 +32,6 @@ const giveFeeback = document.getElementById('giveFeedback');
 const logoutButton = document.getElementById('logoutButton');
 const tutorialButton = document.getElementById('tutorialButton');
 
-if(userMode == "app") {
-    tutorialButton.innerText = "아아아ㅏㅇ";
-}
 
 // Function to handle the shared data
 function handleSharedData() {
@@ -122,7 +120,7 @@ function isIos() {
 }
 
 function isInStandaloneMode() {
-    return ('standalone' in window.navigator) && (window.navigator.standalone);
+    return ('standalone' in window.navigator) || (window.navigator.standalone);
 }
 
 window.onload = () => {
