@@ -1,6 +1,13 @@
 import { setCookie, getCookie, deleteCookie, isUserLogin } from "./utility.js";
 import { checkClipboardForYoutubeLink } from './clipboardModule.js';
 
+//처음 앱을 실행할 때(웹이 아닌 앱 환경으로)
+if (window.matchMedia('(display-mode: standalone)').matches && !getCookie('isStart')) {
+    //튜토리얼 시작
+    location.href = "tutorial.html";
+  }
+
+//클립보드 확인한 뒤 유튜브 영상 분석
 checkClipboardForYoutubeLink();
 
 let deferredPrompt;
@@ -124,7 +131,6 @@ window.onload = () => {
 
 
 window.addEventListener('DOMContentLoaded', () => {
-    document.body.style.display = 'block'; // 문서가 준비되면 본문 보이기
 
     //이미 로그인 상태라면 로그인, 회원가입 버튼 가리기
     if (isUserLogin()) {
