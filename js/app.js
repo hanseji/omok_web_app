@@ -31,6 +31,10 @@ const giveFeeback = document.getElementById('giveFeedback');
 const logoutButton = document.getElementById('logoutButton');
 const tutorialButton = document.getElementById('tutorialButton');
 
+if(userMode == "app") {
+    tutorialButton.innerText = "아아아ㅏㅇ";
+}
+
 // Function to handle the shared data
 function handleSharedData() {
     const parsedUrl = new URL(window.location);
