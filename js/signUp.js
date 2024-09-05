@@ -50,7 +50,7 @@ function signUpSubmit() {
             }
             window.close();
         }) // 홈 화면 뜨게 코드 바꾸기
-        .catch(error => console.log(error))
+        .catch(error => console.log("오류 : "+error))
         .finally(() => console.log("finally"));
 }
 
