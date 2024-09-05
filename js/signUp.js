@@ -59,7 +59,7 @@ function signUpSubmit() {
 }
 
 backToPageButton.addEventListener('click', () => {
-    window.replace("index.html");
+    window.location.replace("index.html");
 });
 
 document.getElementById('submitButton').addEventListener('click', () => {

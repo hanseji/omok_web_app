@@ -30,5 +30,5 @@ document.getElementById("submitButton").addEventListener('click', ()=>{
 });
 
 document.getElementById("backToPageButton").addEventListener('click', () => {
-    window.replace("index.html");
+    window.location.replace("index.html");
 })
