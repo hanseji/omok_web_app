@@ -6,6 +6,8 @@ customElements.get('popup-component') || customElements.define('popup-component'
 const alreadySignUp = document.getElementById('alreadySignUp');
 const errorPopup = document.getElementById('errorPopup');
 
+const backToPageButton = document.getElementById('backToPageButton');
+
 
 function signUpSubmit() {
     var nameInput = document.getElementById("nameInput").value;
@@ -55,6 +57,10 @@ function signUpSubmit() {
         .catch(error => console.log("오류 : "+error))
         .finally(() => console.log("finally"));
 }
+
+backToPageButton.addEventListener('click', () => {
+    window.replace("index.html");
+});
 
 document.getElementById('submitButton').addEventListener('click', () => {
     signUpSubmit();

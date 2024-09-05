@@ -28,3 +28,7 @@ document.getElementById("submitButton").addEventListener('click', ()=>{
     console.log(location.href);
     loginSubmit();
 });
+
+document.getElementById("backToPageButton").addEventListener('click', () => {
+    window.replace("index.html");
+})

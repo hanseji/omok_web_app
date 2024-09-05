@@ -19,26 +19,34 @@
         body {
             padding: 20px;
         }
+
         .container-fluid {
             margin-top: 50px;
         }
-        .form-control, .btn-primary {
+
+        .form-control,
+        .btn-primary {
             border-radius: 10px;
         }
+
         .form-check-label {
             margin-left: 5px;
         }
+
         .form-container {
-            max-width: 100%; /* Ensure the container width is responsive */
+            max-width: 100%;
+            /* Ensure the container width is responsive */
             margin: auto;
         }
+
         .form-header {
             text-align: center;
             font-weight: bold;
             font-size: 2rem;
             margin-bottom: 30px;
         }
-        .btn{
+
+        .btn {
             margin-top: 24px;
             padding-top: 12px;
             padding-bottom: 12px;
@@ -47,55 +55,67 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="form-container">
-            <div class="form-header">회원가입</div>
-                <div class="mb-3">
-                    <label for="nameInput" class="form-label"><strong>이름</strong></label>
-                    <input id="nameInput" type="text" class="form-control" placeholder="이름을 입력하세요" required>
-                </div>
-                <div class="mb-3">
-                    <label for="telNumber" class="form-label"><strong>전화번호</strong></label>
-                    <input id="telNumber" type="tel" class="form-control" pattern="[0-9]{11}" placeholder="숫자만 입력하세요" required>
-                </div>
-                <div class="mb-3">
-                    <label for="ageSelect" class="form-label"><strong>나이</strong></label>
-                    <select id="ageSelect" class="form-select">
-                        <option disabled selected value>나이를 선택해주세요</option>
-                        <option value="E">초등학생</option>
-                        <option value="M">중학생</option>
-                        <option value="H">고등학생</option>
-                        <option value="C">대학생</option>
-                        <option value="Y">청년</option>
-                        <option value="MA">중년</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="regionSelect" class="form-label"><strong>지역</strong></label>
-                    <select id="regionSelect" class="form-select">
-                        <option disabled selected value>지역을 선택해주세요</option>
-                        <option value="SE">서울</option>
-                        <option value="GG">경기도</option>
-                        <option value="GW">강원도</option>
-                        <option value="YN">영남</option>
-                        <option value="HN">호남</option>
-                        <option value="JJ">제주</option>
-                    </select>
-                </div>
-                <div class="mb-3 form-check">
-                    <strong>경계선 지능인인가요?</strong><br>
-                    <input id="isBorderline" type="checkbox" class="form-check-input">
-                    <label for="isBorderline" class="form-check-label">경계선 지능인입니다.</label>
-                </div>
-                <button id="submitButton" class="btn btn-primary w-100">회원가입하기</button>
+    <div class="container" style="max-width: 500px;">
+        <button id="backToPageButton" type="button" class="btn btn-light">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-chevron-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0">
+                </path>
+            </svg>
+            이전으로
+        </button>
+        <div class="form-header">회원가입</div>
+        <div class="mb-3">
+            <label for="nameInput" class="form-label"><strong>이름</strong></label>
+            <input id="nameInput" type="text" class="form-control" placeholder="이름을 입력하세요" required>
         </div>
+        <div class="mb-3">
+            <label for="telNumber" class="form-label"><strong>전화번호</strong></label>
+            <input id="telNumber" type="tel" class="form-control" pattern="[0-9]{11}" placeholder="숫자만 입력하세요" required>
+        </div>
+        <div class="mb-3">
+            <label for="ageSelect" class="form-label"><strong>나이</strong></label>
+            <select id="ageSelect" class="form-select">
+                <option disabled selected value>나이를 선택해주세요</option>
+                <option value="E">초등학생</option>
+                <option value="M">중학생</option>
+                <option value="H">고등학생</option>
+                <option value="C">대학생</option>
+                <option value="Y">청년</option>
+                <option value="MA">중년</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="regionSelect" class="form-label"><strong>지역</strong></label>
+            <select id="regionSelect" class="form-select">
+                <option disabled selected value>지역을 선택해주세요</option>
+                <option value="SE">서울</option>
+                <option value="GG">경기도</option>
+                <option value="GW">강원도</option>
+                <option value="YN">영남</option>
+                <option value="HN">호남</option>
+                <option value="JJ">제주</option>
+            </select>
+        </div>
+        <div class="mb-3 form-check">
+            <strong>경계선 지능인인가요?</strong><br>
+            <input id="isBorderline" type="checkbox" class="form-check-input">
+            <label for="isBorderline" class="form-check-label">경계선 지능인입니다.</label>
+        </div>
+        <button id="submitButton" class="btn btn-primary w-100">회원가입하기</button>
     </div>
 
 
-	<popup-component id="alreadySignUp" title="이미 존재하는 회원입니다." content="처음 회원가입을 한다면 이름 및 전화번호를 확인해주세요. 이미 회원가입을 한 경우라면 로그인을 진행해주세요", close-button="true", button-config='[{"text":"이름, 전화번호 확인하기", "action":"goToSignUp", "class":["btn-light", "btn"]}, {"text":"로그인하기", "action":"goToLogin", "class":["btn-primary", "btn"]}]', opened="false"></popup-component>
-	<popup-component id="errorPopup" title="회원가입이 실패하였습니다." content="잠시 뒤에 다시 한 번 시도해주세요", close-button="true", button-config='[{"text":"닫기", "action":"closeErrorPopup", "class":["btn-light", "btn"]}]', opened="false"></popup-component>
+    <popup-component id="alreadySignUp" title="이미 존재하는 회원입니다."
+        content="처음 회원가입을 한다면 이름 및 전화번호를 확인해주세요. 이미 회원가입을 한 경우라면 로그인을 진행해주세요" , close-button="true" ,
+        button-config='[{"text":"이름, 전화번호 확인하기", "action":"goToSignUp", "class":["btn-light", "btn"]}, {"text":"로그인하기", "action":"goToLogin", "class":["btn-primary", "btn"]}]'
+        , opened="false"></popup-component>
+    <popup-component id="errorPopup" title="회원가입이 실패하였습니다." content="잠시 뒤에 다시 한 번 시도해주세요" , close-button="true" ,
+        button-config='[{"text":"닫기", "action":"closeErrorPopup", "class":["btn-light", "btn"]}]' ,
+        opened="false"></popup-component>
 
-    
+
     <script src="/js/signUp.js" type="module"></script>
 </body>
 
