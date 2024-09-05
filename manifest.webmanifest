@@ -1,7 +1,7 @@
 {
   "name": "오목눈이",
   "short_name": "오목눈이",
-  "start_url": "/",
+  "start_url": "/?userMode=app",
   "display": "fullscreen",
   "theme_color": "#ffffff",
   "share_target": {

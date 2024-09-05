@@ -1,6 +1,7 @@
 import { setCookie, getCookie, deleteCookie, isUserLogin } from "./utility.js";
 let currentIndex = 0;
 let isStart;
+let userMode;
 let slides = document.querySelectorAll('.slide');
 const dotsContainer = document.getElementById('dots');
 const nextButton = document.getElementById('nextButton');
@@ -12,6 +13,7 @@ const returnButton = document.getElementById('returnButton');
 function handleSharedData() {
     const parsedUrl = new URL(window.location);
     isStart = String(parsedUrl.searchParams.get('isStart'));
+    userMode = String(parsedUrl.searchParams.get('userMode'));
 }
 
 

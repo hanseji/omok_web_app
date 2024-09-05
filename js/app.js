@@ -1,6 +1,10 @@
 import { setCookie, getCookie, deleteCookie, isUserLogin } from "./utility.js";
 import { checkClipboardForYoutubeLink } from './clipboardModule.js';
 
+handleSharedData();
+
+console.log(userMode == "app");
+
 //처음 앱을 실행할 때(웹이 아닌 앱 환경으로)
 console.log(('standalone' in window.navigator) );
 console.log(window.matchMedia('(display-mode: standalone)').matches);
@@ -24,6 +28,13 @@ const loginButton = document.getElementById('loginButton');
 const giveFeeback = document.getElementById('giveFeedback');
 const logoutButton = document.getElementById('logoutButton');
 const tutorialButton = document.getElementById('tutorialButton');
+
+// Function to handle the shared data
+function handleSharedData() {
+    const parsedUrl = new URL(window.location);
+    isStart = String(parsedUrl.searchParams.get('isStart'));
+    userMode = String(parsedUrl.searchParams.get('userMode'));
+}
 
 window.addEventListener('beforeinstallprompt', (e) => {
     // Prevent the mini-infobar from appearing on mobile
