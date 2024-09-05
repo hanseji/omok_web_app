@@ -146,6 +146,7 @@ function handleSharedData() {
 
 document.addEventListener("DOMContentLoaded", (event) => {
     handleSharedData();
+    console.log(slides);
     
     if (isStart !== "1") {
         //만약 "사용 방법" 버튼을 통해 들어오면 돌아가기 버튼 활성화
@@ -155,6 +156,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         //이미 설치 되어 있다면 설치 안내 튜토리얼 건너뛰기
         slides.shift();
         currentSlide(0);
+        console.log(slides);
     }
 
     // Initialize dots on page load
