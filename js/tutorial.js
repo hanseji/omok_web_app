@@ -141,7 +141,9 @@ returnButton.addEventListener('click', () => {
 })
 
 document.addEventListener("DOMContentLoaded", (event) => {
-    if (isStart != "1") {
+    handleSharedData();
+    
+    if (isStart !== "1") {
         //만약 "사용 방법" 버튼을 통해 들어오면 돌아가기 버튼 활성화
         returnButton.style.display = "block";
     }
@@ -152,7 +154,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     // Initialize dots on page load
     createDots();
-    
+
     if (window.innerWidth >= 600) {
         nextButton.style.display = "block";
         prevButton.style.display = "block";
