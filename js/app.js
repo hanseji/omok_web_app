@@ -3,13 +3,9 @@ import { checkClipboardForYoutubeLink } from './clipboardModule.js';
 
 
 //처음 앱을 실행할 때(웹이 아닌 앱 환경으로)
-console.log(('standalone' in window.navigator) );
-console.log(window.matchMedia('(display-mode: standalone)').matches);
-console.log(window.navigator.standalone);
-console.log(getCookie('isStart') == null);
 if (isInStandaloneMode() && getCookie('isStart') == null) {
     //튜토리얼 시작
-    location.href = "tutorial.html";
+    location.href = "tutorial.html?isStart=1";
 }
 
 //클립보드 확인한 뒤 유튜브 영상 분석
