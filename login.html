@@ -34,7 +34,8 @@
             font-size: 2rem;
             margin-bottom: 30px;
         }
-        .btn{
+
+        .btn {
             padding-top: 12px;
             padding-bottom: 12px;
         }
@@ -44,20 +45,17 @@
 <body>
     <div class="container">
         <div class="form-header">로그인</div>
-        <form>
-            <div class="mb-3">
-                <label for="nameInput" class="form-label"><strong>이름</strong></label>
-                <input id="nameInput" type="text" class="form-control" placeholder="이름을 입력하세요">
-            </div>
-            <div class="mb-3">
-                <label for="telNumber" class="form-label"><strong>전화번호</strong></label>
-                <input id="telNumber" type="tel" class="form-control" pattern="[0-9]{11}"
-                    placeholder="전화번호를 입력해주세요">
-            </div>
-            <div class="d-grid gap-2">
-                <button id="submitButton" type="submit" class="btn btn-primary" style="margin-top: 20px;">로그인하기</button>
-            </div>
-        </form>
+        <div class="mb-3">
+            <label for="nameInput" class="form-label"><strong>이름</strong></label>
+            <input id="nameInput" type="text" class="form-control" placeholder="이름을 입력하세요">
+        </div>
+        <div class="mb-3">
+            <label for="telNumber" class="form-label"><strong>전화번호</strong></label>
+            <input id="telNumber" type="tel" class="form-control" pattern="[0-9]{11}" placeholder="전화번호를 입력해주세요">
+        </div>
+        <div class="d-grid gap-2">
+            <button id="submitButton" class="btn btn-primary" style="margin-top: 20px;">로그인하기</button>
+        </div>
     </div>
 
     <script src="/js/login.js" type="module"></script>

@@ -50,7 +50,6 @@
     <div class="container">
         <div class="form-container">
             <div class="form-header">회원가입</div>
-            <form>
                 <div class="mb-3">
                     <label for="nameInput" class="form-label"><strong>이름</strong></label>
                     <input id="nameInput" type="text" class="form-control" placeholder="이름을 입력하세요" required>
@@ -88,13 +87,12 @@
                     <input id="isBorderline" type="checkbox" class="form-check-input">
                     <label for="isBorderline" class="form-check-label">경계선 지능인입니다.</label>
                 </div>
-                <button id="submitButton" type="submit" class="btn btn-primary w-100">회원가입하기</button>
-            </form>
+                <button id="submitButton" class="btn btn-primary w-100">회원가입하기</button>
         </div>
     </div>
 
 
-	<popup-component id="alreadySignUp" title="이미 존재하는 회원입니다." content="처음 회원가입을 한다면 이름 및 전화번호를 확인해주세요. 이미 회원가입을 한 경우라면 로그임을 진행해주세요", close-button="true", button-config='[{"text":"이름, 전화번호 확인하기", "action":"goToSignUp", "class":["btn-light", "btn"]}, {"text":"로그인하기", "action":"goToLogin", "class":["btn-primary", "btn"]}]', opened="false"></popup-component>
+	<popup-component id="alreadySignUp" title="이미 존재하는 회원입니다." content="처음 회원가입을 한다면 이름 및 전화번호를 확인해주세요. 이미 회원가입을 한 경우라면 로그인을 진행해주세요", close-button="true", button-config='[{"text":"이름, 전화번호 확인하기", "action":"goToSignUp", "class":["btn-light", "btn"]}, {"text":"로그인하기", "action":"goToLogin", "class":["btn-primary", "btn"]}]', opened="false"></popup-component>
 	<popup-component id="errorPopup" title="회원가입이 실패하였습니다." content="잠시 뒤에 다시 한 번 시도해주세요", close-button="true", button-config='[{"text":"닫기", "action":"closeErrorPopup", "class":["btn-light", "btn"]}]', opened="false"></popup-component>
 
     
