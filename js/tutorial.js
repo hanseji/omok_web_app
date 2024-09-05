@@ -1,20 +1,12 @@
 import { setCookie, getCookie, deleteCookie, isUserLogin } from "./utility.js";
 let currentIndex = 0;
 let isStart;
-let userMode;
 let slides = document.querySelectorAll('.slide');
 const dotsContainer = document.getElementById('dots');
 const nextButton = document.getElementById('nextButton');
 const prevButton = document.getElementById('prevButton');
 const goToWebsiteButton = document.getElementById('goToWebsiteButton');
 const returnButton = document.getElementById('returnButton');
-
-// Function to handle the shared data
-function handleSharedData() {
-    const parsedUrl = new URL(window.location);
-    isStart = String(parsedUrl.searchParams.get('isStart'));
-    userMode = String(parsedUrl.searchParams.get('userMode'));
-}
 
 
 // Function to create dots dynamically
