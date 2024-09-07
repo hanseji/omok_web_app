@@ -2,6 +2,7 @@ import { setCookie, getCookie, deleteCookie, isUserLogin } from "./utility.js";
 let currentIndex = 0;
 let isStart;
 let slides = document.querySelectorAll('.slide');
+let videos = document.querySelectorAll('video');
 const dotsContainer = document.getElementById('dots');
 const nextButton = document.getElementById('nextButton');
 const prevButton = document.getElementById('prevButton');
@@ -29,6 +30,7 @@ function updateDots() {
             dot.classList.remove('active');
         }
     });
+    controlVideoPlayback();
 }
 
 function nextSlide() {
@@ -85,6 +87,27 @@ function currentSlide(index) {
     }
     nextSlide.classList.add('active');
     updateDots();
+}
+
+// 활성화된 슬라이드를 확인하고 비디오를 재생 또는 정지합니다.
+function controlVideoPlayback() {
+    videos = document.querySelectorAll('video');
+    videos.forEach((video) => {
+        // 현재 비디오의 부모 요소들 중에 'active' 클래스를 가진 요소를 찾습니다.
+        if (video.closest('.active')) {
+            if (video.readyState >= 3) {  // 비디오가 재생 준비가 되었는지 확인합니다.
+                video.play();
+            } else {
+                // 비디오가 로드되면 자동으로 재생을 시작합니다.
+                video.addEventListener('canplay', () => {
+                    video.play();
+                });
+            }
+        } else {
+            video.pause();
+            video.currentTime = 0;  // 비디오를 처음부터 재생합니다.
+        }
+    });
 }
 
 // Swipe detection
@@ -146,13 +169,14 @@ function handleSharedData() {
 
 document.addEventListener("DOMContentLoaded", (event) => {
     handleSharedData();
-    
+
     if (isStart !== "1") {
         //만약 "사용 방법" 버튼을 통해 들어오면 돌아가기 버튼 활성화
         returnButton.style.display = "block";
     }
     if (isInStandaloneMode()) {
         //이미 설치 되어 있다면 설치 안내 튜토리얼 건너뛰기
+        slides[0].classList.remove('active');
         slides[0].remove();
         slides = document.querySelectorAll('.slide');
         slides[0].classList.add('active');
@@ -165,4 +189,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
         nextButton.style.display = "block";
         prevButton.style.display = "block";
     }
+    controlVideoPlayback();
+
 });
