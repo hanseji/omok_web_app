@@ -16,12 +16,15 @@ const mutableRequests = [
     '/js/app.js',
     '/view-results-page.html',
     */
-    'images/explain/tutorial-clickMore.webm',
-    'images/explain/tutorial-clickOmok.webm',
-    'images/explain/tutorial-clickShare.webm',
-    'images/explain/tutorial-createResult.webm',
-    'images/explain/tutorial-install.webm',
-    "/offline.html",
+    '/images/explain/tutorial-clickMore.webm',
+    '/images/explain/tutorial-clickOmok.webm',
+    '/images/explain/tutorial-clickShare.webm',
+    '/images/explain/tutorial-createResult.webm',
+    '/images/explain/tutorial-install.webm',
+    '/index.html',
+    '/login.html',
+    '/signUp.html',
+    '/tutorial.html',
 ];
 
 
