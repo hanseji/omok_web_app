@@ -91,7 +91,7 @@ self.addEventListener("fetch", (event) => {
                                 return res;
                             });
                         })
-                        .cache(function (err) {
+                        .catch(function (err) {
                             return caches.open(CACHE_STATIC_NAME).then(function (cache) {
                                 return cache.match("/offline.html");
                             })
