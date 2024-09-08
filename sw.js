@@ -74,11 +74,6 @@ self.addEventListener("fetch", (event) => {
             return Response.redirect('/index.html', 303);
         }
     } else {
-        /**
-         * @TODO 나중에 다시 캐시 사용할 수 있게 수정
-         */
-        //return fetch(event.request);
-        // Regular requests not related to Web Share Target.
         event.respondWith(
             caches.match(event.request).then((response) => {
                 if (response) {
@@ -86,18 +81,19 @@ self.addEventListener("fetch", (event) => {
                 } else {
                     return fetch(event.request)
                         .then(function (res) {
+                            //캐시가 없으면 일단 다이나믹으로 캐시 저장
                             return caches.open(CACHE_DYNAMIC_NAME).then(function (cache) {
-                                cache.put(event.url, res.clone());
+                                cache.put(event.request.url, res.clone());
                                 return res;
                             });
                         })
                         .catch(function (err) {
+                            //네트워크가 끊기면 offline.html 파일 보여줌
                             return caches.open(CACHE_STATIC_NAME).then(function (cache) {
                                 return cache.match("/offline.html");
                             })
                         });
                 }
-                return response || fetch(event.request);
             })
         );
     }
