@@ -27,7 +27,7 @@ const mutableRequests = [
 
 self.addEventListener("install", function (event) {
     event.waitUntil(
-        caches.open(CACHE_NAME).then(function (cache) {
+        caches.open(CACHE_STATIC_NAME).then(function (cache) {
             const newImmutableRequests = [];
             return Promise.all(
                 immutableRequests.map(function (url) {
