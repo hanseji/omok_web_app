@@ -1,5 +1,5 @@
 const CACHE_STATIC_NAME = "static-v1";
-const CACHE_DYNAMIC_NAME = "dynamic-v1";
+const CACHE_DYNAMIC_NAME = "dynamic-v0.5.2";
 
 const immutableRequests = [
     "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css",
@@ -55,7 +55,7 @@ self.addEventListener('active', function (event) {
         caches.keys().then(function (cacheNames) {
             return Promise.all(
                 cacheNames.map(function (cacheName) {
-                    if ((CACHE_STATIC_NAME !== cacheName && cacheName.startsWith("static")) || (CACHE_DYNAMIC_NAME !== cacheName && cacheName.startsWith("dynamic"))) {
+                    if (CACHE_STATIC_NAME !== cacheName || CACHE_DYNAMIC_NAME !== cacheName) {
                         return caches.delete(cacheName);
                     }
                 })
