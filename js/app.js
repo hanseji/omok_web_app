@@ -48,11 +48,11 @@ tutorialButton.addEventListener('click', () => {
 })
 
 signUpButton.addEventListener('click', () => {
-    location.href = "signUp.html";
+    location.href = "signup";
 });
 
 loginButton.addEventListener('click', () => {
-    location.href = "login.html";
+    location.href = "login";
 });
 
 logoutButton.addEventListener('click', () => {
