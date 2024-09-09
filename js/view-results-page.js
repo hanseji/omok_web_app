@@ -206,7 +206,7 @@ window.addEventListener('DOMContentLoaded', () => {
         location.replace("/index.html");
     };
     window.goToSignUp = () => {
-        location.replace("/signUp.html");
+        location.replace("/signup");
     };
 });
 
