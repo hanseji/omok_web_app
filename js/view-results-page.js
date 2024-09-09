@@ -127,7 +127,7 @@ function fetchSummaryData() {
     console.log(fetchUrl);
     fetch(fetchUrl)
         .then((response) => response.json())
-        .then((data) => CreateSpaceContent(data.summary_result))
+        .then((data) => CreateSpaceContent(data.summary))
         .catch(error => { CreateSpaceContent('데이터를 가져오는 중 에러가 발생하였습니다\n에러코드 : ', error); hideLoadingSpinner(); })
         .finally(() => hideLoadingSpinner());
 }
