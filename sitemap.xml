@@ -10,6 +10,27 @@
 <url>
   <loc>https://omoknuni.netlify.app/</loc>
   <lastmod>2024-09-06T07:56:19+00:00</lastmod>
+  <priority>1.0</priority>
+</url>
+<url>
+  <loc>https://omoknuni.netlify.app/login</loc>
+  <lastmod>2024-09-06T07:56:19+00:00</lastmod>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://omoknuni.netlify.app/signup</loc>
+  <lastmod>2024-09-06T07:56:19+00:00</lastmod>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://omoknuni.netlify.app/tutorial</loc>
+  <lastmod>2024-09-06T07:56:19+00:00</lastmod>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://omoknuni.netlify.app/view-results-page</loc>
+  <lastmod>2024-09-06T07:56:19+00:00</lastmod>
+  <priority>0.5</priority>
 </url>
 
 
