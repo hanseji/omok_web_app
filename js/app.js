@@ -56,7 +56,7 @@ loginButton.addEventListener('click', () => {
 
 logoutButton.addEventListener('click', () => {
     deleteCookie('ph_number');
-    location.href = '#';
+    location.href = '/';
 });
 
 giveFeeback.addEventListener('click', () => {
