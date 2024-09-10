@@ -16,6 +16,13 @@ function signUpSubmit() {
     var ages = document.getElementById("ageSelect").value;
     var region = document.getElementById("regionSelect").value;
 
+    const regex = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9| |]+$/;
+  
+    if (!regex.test(nameInput)) {
+        alert('이름에 특수 문자는 입력할 수 없습니다.');
+        return false;
+    }
+
 
     fetch(`https://omok-w.fly.dev/omok_signin/${telNumber}?name=${nameInput}&is_me=${isBorderline}&age=${ages}&region=${region}`)
         .then((response) => response.json())

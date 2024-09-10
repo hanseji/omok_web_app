@@ -4,6 +4,13 @@ function loginSubmit() {
     var nameInput = document.getElementById("nameInput").value;
     var telNumber = document.getElementById("telNumber").value;
 
+    const regex = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9| |]+$/;
+  
+    if (!regex.test(nameInput)) {
+        alert('이름에 특수 문자는 입력할 수 없습니다.');
+        return false;
+    }
+
     fetch(`https://omok-w.fly.dev/omok_login/${telNumber}?name=${nameInput}`)
         .then((response) => response.json())
         .then((data) => {
