@@ -11,6 +11,8 @@ function loginSubmit() {
         return false;
     }
 
+    showLoadingSpinner();
+
     fetch(`https://omok-w.fly.dev/omok_login/${telNumber}?name=${nameInput}`)
         .then((response) => response.json())
         .then((data) => {
@@ -21,14 +23,23 @@ function loginSubmit() {
                 location.replace(`/index.html`);
             } else {
                 //로그인 실패
+                hideLoadingSpinner();
                 if(data.status == "no name") {
                     //이름이 빠졌음
                 } else {
                     console.log(data.status);//로그인 실패
                 }
             }})
-        .catch(error => console.log("실패"))
+        .catch(error => {console.log(error); hideLoadingSpinner();})
         .finally(() => console.log("finally"));
+}
+
+function showLoadingSpinner() {
+    document.getElementById("loadingScreen").style.display = 'flex';
+}
+
+function hideLoadingSpinner() {
+    document.getElementById("loadingScreen").style.display = 'none';
 }
 
 document.getElementById("submitButton").addEventListener('click', ()=>{
