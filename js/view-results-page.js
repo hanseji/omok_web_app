@@ -98,14 +98,16 @@ document.getElementById('overlay').addEventListener('click', function (event) {
 
 // Function to handle the shared data
 function handleSharedData() {
-    const parsedUrl = new URL(window.location);
-    const title = parsedUrl.searchParams.get('title');
-    const text = parsedUrl.searchParams.get('text');
-    const url = parsedUrl.searchParams.get('url');
+    let parsedUrl = new URL(window.location);
+    let title = parsedUrl.searchParams.get('title');
+    let text = parsedUrl.searchParams.get('text');
+    let url = parsedUrl.searchParams.get('url');
 
-    const youtubeUrl = new URL(text);
+    let youtubeUrl = new URL(text);
     youtubeID = youtubeUrl.searchParams.get('v');
     youtubeTime = youtubeUrl.searchParams.get('t') || 0;
+
+    console.log(text + "  " + youtubeID);
 
     if (text) {
         //document.getElementById('content').innerText = `${text}`;
@@ -154,6 +156,7 @@ function CreateSpaceContent(textInput) {
             return line; // Non-numbered lines are not wrapped
         }
     }).join('\n');
+    formattedText = formattedText + "<br><br>"
     contentElement.innerHTML = formattedText;
 }
 

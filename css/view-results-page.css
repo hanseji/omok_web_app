@@ -6,6 +6,10 @@ body {
     font-family: "Noto Sans KR";
 }
 
+li {
+    font-family: "Noto Sans KR";
+}
+
 .body-no-scroll {
     overflow: hidden;
     /* 스크롤을 비활성화합니다 */
@@ -90,3 +94,4 @@ body {
     background-image: linear-gradient(to bottom, transparent, white); /* 그라데이션 효과 적용 */
     pointer-events: none; /* 클릭 이벤트 방지 */
   }
+
