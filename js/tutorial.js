@@ -37,9 +37,9 @@ function nextSlide() {
     if (currentIndex + 1 == slides.length - 1) {
         //만약 "사용 방법" 버튼을 통해 들어오면 버튼 설명을 "완료"로 변경, 아니면 "시작하기"로 변경
         if (isStart == "1") {
-            goToWebsiteButton.innerText = "시작하기"
+            goToWebsiteButton.innerText = "시작하기";
         } else {
-            goToWebsiteButton.innerText = "완료"
+            goToWebsiteButton.innerText = "완료";
         }
     }
     if (currentIndex + 1 <= slides.length - 1) {
@@ -143,9 +143,8 @@ goToWebsiteButton.addEventListener('click', () => {
     if (goToWebsiteButton.innerText == "다음으로") {
         nextSlide();
     } else {
-        /**@TODO 아래 활성화하면 처음 사용자가 아님이 기록됨 */
-        //setCookie("isStart", "1", 730);
         if (isStart == "1") {
+            setCookie('isStart', "true", 730);
             window.location.replace('index.html'); // Replace with your desired URL
         } else {
             window.location.replace('index.html'); // Replace with your desired URL

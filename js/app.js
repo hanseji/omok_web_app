@@ -5,8 +5,7 @@ import { checkClipboardForYoutubeLink } from './clipboardModule.js';
 //처음 앱을 실행할 때(웹이 아닌 앱 환경으로)
 if (isInStandaloneMode() && getCookie('isStart') == null) {
     //튜토리얼 시작
-    /**@TODO 주석 지우면 시작하자 마자 튜토리얼 시작됨. */
-    //location.href = "tutorial.html?isStart=1";
+    location.href = "tutorial.html?isStart=1";
 }
 
 //클립보드 확인한 뒤 유튜브 영상 분석
