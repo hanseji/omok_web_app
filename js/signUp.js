@@ -16,14 +16,6 @@ function signUpSubmit() {
     var ages = document.getElementById("ageSelect").value;
     var region = document.getElementById("regionSelect").value;
 
-    console.log(nameInput);
-    console.log(telNumber);
-    console.log(isBorderline);
-    console.log(ages);
-    console.log(region);
-
-    console.log(`https://omok-w.fly.dev/omok_signin/${telNumber}?name=${nameInput}&is_me=${isBorderline}&age=${ages}&region=${region}`);
-
 
     fetch(`https://omok-w.fly.dev/omok_signin/${telNumber}?name=${nameInput}&is_me=${isBorderline}&age=${ages}&region=${region}`)
         .then((response) => response.json())

@@ -1,5 +1,5 @@
-const CACHE_STATIC_NAME = "static-v0.5.4"; //1은 하면 안 됨, 이미 해버림
-const CACHE_DYNAMIC_NAME = "dynamic-v0.5.4";
+const CACHE_STATIC_NAME = "static-v1.0.1"; //1은 하면 안 됨, 이미 해버림
+const CACHE_DYNAMIC_NAME = "dynamic-v1.0.1";
 
 const immutableRequests = [
     "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css",
@@ -21,6 +21,9 @@ const mutableRequests = [
     '/images/explain/tutorial-clickShare.webm',
     '/images/explain/tutorial-createResult.webm',
     '/images/explain/tutorial-install.webm',
+    '/images/icon-192.png',
+    '/images/icon-512.png',
+    '/images/share_ios-512.png',
     '/index.html',
     '/login.html',
     '/signUp.html',

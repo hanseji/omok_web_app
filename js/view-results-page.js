@@ -165,23 +165,17 @@ function handleCookies() {
         //처음 사용해보는 사람임
         handleSharedData();
         setCookie("free_times", 1, 30);
-        console.log("1");
-    } else if (cookieValue == null && Number(freeTimeValue) < 5) {
-        //이전에 사용한 적이 있지만 5번 미만으로 사용한 사람임
+    } else if (cookieValue == null && Number(freeTimeValue) < 3) {
+        //이전에 사용한 적이 있지만 3번 미만으로 사용한 사람임
         //아직 회원가입 의무 없음
         handleSharedData();
         setCookie("free_times", String(Number(freeTimeValue) + 1), 30);
-        console.log("2");
     } else if (cookieValue == null) {
         //회원가입 의무 있음
-        console.log("회원가입 해");
         motivateingSignUpPopup.open();
-        //const changeUrl = `/signUp.html`;
-        //location.replace(changeUrl);
     } else if (cookieValue != null) {
         //이미 로그인한 사람으로 회원가입 의무 없음
         handleSharedData();
-        console.log("3");
     }
 }
 
