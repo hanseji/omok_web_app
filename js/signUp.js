@@ -23,6 +23,7 @@ function signUpSubmit() {
         return false;
     }
 
+    showLoadingSpinner();
 
     fetch(`https://omok-w.fly.dev/omok_signin/${telNumber}?name=${nameInput}&is_me=${isBorderline}&age=${ages}&region=${region}`)
         .then((response) => response.json())
@@ -35,7 +36,7 @@ function signUpSubmit() {
                 setCookie("user_name", nameInput, 730);
                 location.replace(`/index.html`);
             } else {
-                console.log("이건");
+                hideLoadingSpinner();
                 //회원가입 실패
                 if(String(data.status) == "already exists") {
                     //회원 정보 이미 있음
@@ -53,8 +54,16 @@ function signUpSubmit() {
             }
             window.close();
         }) // 홈 화면 뜨게 코드 바꾸기
-        .catch(error => console.log("오류 : "+error))
+        .catch(error => {console.log(error); hideLoadingSpinner();})
         .finally(() => console.log("finally"));
+}
+
+function showLoadingSpinner() {
+    document.getElementById("loadingScreen").style.display = 'flex';
+}
+
+function hideLoadingSpinner() {
+    document.getElementById("loadingScreen").style.display = 'none';
 }
 
 backToPageButton.addEventListener('click', () => {
