@@ -17,19 +17,19 @@ function isInStandaloneMode() {
 
 export async function checkClipboardForYoutubeLink() {
   try {
-    if (isIos() && isInStandaloneMode()) {
-      // 클립보드 내용을 읽기
-      const text = await navigator.clipboard.readText();
+    //if (isIos() && isInStandaloneMode()) {
+    // 클립보드 내용을 읽기
+    const text = await navigator.clipboard.readText();
 
-      // 유튜브 링크인지 확인하는 정규 표현식
-      const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/;
+    // 유튜브 링크인지 확인하는 정규 표현식
+    const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/;
 
-      if (youtubeRegex.test(text)) {
-        // 유튜브 링크가 감지되면 모달 표시
-        youtubeLink = text;
-        showYoutubeRedirectModal(text);
-      }
+    if (youtubeRegex.test(text)) {
+      // 유튜브 링크가 감지되면 모달 표시
+      youtubeLink = text;
+      showYoutubeRedirectModal(text);
     }
+    //}
   } catch (error) {
     console.error('Failed to read clipboard contents:', error);
   }
@@ -44,7 +44,7 @@ function showYoutubeRedirectModal(youtubeLink) {
 
   // 모달 HTML 생성
   const modalHtml = `
-	<popup-component id="detectedClipboard" title="유튜브 링크 감지됨" content="클립보드에서 유튜브 링크를 감지했습니다. 이 링크에 대한 요약을 진행할까요?", close-button="true", button-config='[{"text":"취소", "action":"goToHome", "class":["btn-secondary", "btn"]}, {"text":"요약하기", "action":"goToSummary", "class":["btn-primary", "btn"]}]', opened="true"></popup-component>
+	<popup-component id="detectedClipboard" title="유튜브 링크 감지됨" content="클립보드에서 유튜브 링크를 감지했습니다. 이 링크에 대한 요약을 진행할까요?", close-button="true", button-config='[{"text":"취소", "action":"goToHome", "class":["btn-light", "btn"]}, {"text":"요약하기", "action":"goToSummary", "class":["btn-primary", "btn"]}]', opened="true"></popup-component>
   `;
 
   // 모달을 body에 추가
