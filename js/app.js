@@ -9,7 +9,9 @@ if (isInStandaloneMode() && getCookie('isStart') == null) {
 }
 
 //클립보드 확인한 뒤 유튜브 영상 분석
-checkClipboardForYoutubeLink();
+window.addEventListener('focus', function() {
+    checkClipboardForYoutubeLink();
+}, false);
 
 let deferredPrompt;
 const installPromptOverlay = document.getElementById('overlay');

@@ -17,19 +17,19 @@ function isInStandaloneMode() {
 
 export async function checkClipboardForYoutubeLink() {
   try {
-    if (isIos() && isInStandaloneMode()) {
-      // 클립보드 내용을 읽기
-      const text = await navigator.clipboard.readText();
+    //if (isIos() && isInStandaloneMode()) {
+    // 클립보드 내용을 읽기
+    const text = await navigator.clipboard.readText();
 
-      // 유튜브 링크인지 확인하는 정규 표현식
-      const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/;
+    // 유튜브 링크인지 확인하는 정규 표현식
+    const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/;
 
-      if (youtubeRegex.test(text)) {
-        // 유튜브 링크가 감지되면 모달 표시
-        youtubeLink = text;
-        showYoutubeRedirectModal(text);
-      }
+    if (youtubeRegex.test(text)) {
+      // 유튜브 링크가 감지되면 모달 표시
+      youtubeLink = text;
+      showYoutubeRedirectModal(text);
     }
+    //}
   } catch (error) {
     console.error('Failed to read clipboard contents:', error);
   }
