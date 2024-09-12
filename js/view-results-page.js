@@ -113,7 +113,7 @@ function handleSharedData() {
         //document.getElementById('content').innerText = `${text}`;
         initialYoutube();
         document.getElementById('title').innerText = `${title}`;
-        //fetchSummaryData();
+        fetchSummaryData();
     }
 }
 
