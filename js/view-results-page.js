@@ -104,7 +104,7 @@ function handleSharedData() {
     let url = parsedUrl.searchParams.get('url');
 
     let youtubeUrl = new URL(text);
-    youtubeID = youtubeUrl.searchParams.get('v');
+    youtubeID = youtubeUrl.searchParams.get('v') || youtubeUrl.pathname.slice(1);
     youtubeTime = youtubeUrl.searchParams.get('t') || 0;
 
     console.log(text + "  " + youtubeID);
@@ -113,7 +113,7 @@ function handleSharedData() {
         //document.getElementById('content').innerText = `${text}`;
         initialYoutube();
         document.getElementById('title').innerText = `${title}`;
-        fetchSummaryData();
+        //fetchSummaryData();
     }
 }
 
