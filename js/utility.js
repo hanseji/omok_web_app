@@ -1,4 +1,4 @@
-export {setCookie, getCookie, deleteCookie,isUserLogin}
+export {setCookie, getCookie, deleteCookie, isUserLogin, isInStandaloneMode, isIos}
 
 /**
  * 제목, 내용, 저장 기간을 입력받아 쿠키를 저장
@@ -41,4 +41,21 @@ function isUserLogin() {
     } else {
         return false;
     }
+}
+
+/**
+ * 유저 화면이 IOS인지 확인
+ * @returns {Boolean} IOS이면 true 아니면 false
+ */
+function isIos() {
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    return /iphone|ipad|ipod/.test(userAgent);
+}
+
+/**
+ * 유저가 사이트를 설치했는지 확인
+ * @returns {Boolean} 설치했으면 true 아니면 false
+ */
+function isInStandaloneMode() {
+    return window.matchMedia('(display-mode: standalone)').matches || (window.navigator.standalone);
 }

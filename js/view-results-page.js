@@ -5,6 +5,8 @@ import { PopupComponent } from './components/simplePopup.js';
 customElements.get('popup-component') || customElements.define('popup-component', PopupComponent);
 const motivateingSignUpPopup = document.getElementById('motivateingSignUpPopup');
 
+const closeApp = document.getElementById("closeApp");
+
 // Slider handling
 var slider = document.getElementById("slider");
 var sliderCheckButton = document.getElementById("closePopup");
@@ -207,6 +209,8 @@ window.addEventListener('DOMContentLoaded', () => {
     };
 });
 
-document.getElementById('closeApp').addEventListener('click', function () {
+/*
+closeApp.addEventListener('click', function () {
     window.open(`https://youtu.be/watch?v=${youtubeID}`, '_blank');
 });
+ */
