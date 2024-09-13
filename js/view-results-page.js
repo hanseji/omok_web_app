@@ -199,7 +199,7 @@ openPopupButton.addEventListener('click', () => {
 
 window.addEventListener('DOMContentLoaded', () => {
     //initialYoutube();
-    //handleCookies(); //쿠키 관리
+    handleCookies(); //쿠키 관리
     CreateSpaceContent(null);
     window.goToHome = () => {
         location.replace("/index.html");
