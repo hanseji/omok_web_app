@@ -8,6 +8,9 @@ body {
 
 li {
     font-family: "Noto Sans KR";
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
 }
 
 .body-no-scroll {
