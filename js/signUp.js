@@ -1,4 +1,4 @@
-import {setCookie, getCookie, deleteCookie} from "./utility.js";
+import {setCookie} from "./utility.js";
 import { PopupComponent } from './components/simplePopup.js';
 
 

@@ -1,4 +1,4 @@
-import { setCookie, getCookie, deleteCookie, isUserLogin } from "./utility.js";
+import { setCookie } from "./utility.js";
 
 function loginSubmit() {
     var nameInput = document.getElementById("nameInput").value;

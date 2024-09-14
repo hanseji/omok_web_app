@@ -1,4 +1,4 @@
-import { setCookie, getCookie, deleteCookie, isUserLogin } from "./utility.js";
+import { getCookie, deleteCookie, isUserLogin } from "./utility.js";
 import { checkClipboardForYoutubeLink } from './clipboardModule.js';
 
 

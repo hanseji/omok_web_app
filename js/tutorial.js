@@ -1,4 +1,4 @@
-import { setCookie, getCookie, deleteCookie, isUserLogin } from "./utility.js";
+import { setCookie} from "./utility.js";
 let currentIndex = 0;
 let isStart;
 let slides = document.querySelectorAll('.slide');
