@@ -40,7 +40,7 @@
         <div style="width: 100%; height: 144px; flex-shrink: 0;"></div>
     </div>
     <div class="d-grid gap-2">
-        <button id="openPopupButton" class="btn btn-primary fixed-button bottomButton">특정 구간 설명 보기</button>
+        <button id="openPopupButton" class="btn btn-dark fixed-button bottomButton">특정 구간 설명 보기</button>
     </div>
 
 
@@ -54,7 +54,7 @@
         </div>
     </div>
 
-	<popup-component id="motivateingSignUpPopup" title="회원가입해주세요" content="무료로 사용할 수 있는 횟수인 3회를 넘었습니다. 회원가입하여 오목눈이를 무제한으로 사용해보세요", close-button="false", button-config='[{"text":"홈으로 돌아가기", "action":"goToHome", "class":["btn-light", "btn"]}, {"text":"회원가입 하기", "action":"goToSignUp", "class":["btn-primary", "btn"]}]', opened="false"></popup-component>
+	<popup-component id="motivateingSignUpPopup" title="회원가입해주세요" content="무료로 사용할 수 있는 횟수인 3회를 넘었습니다. 회원가입하여 오목눈이를 무제한으로 사용해보세요", close-button="false", button-config='[{"text":"홈으로 돌아가기", "action":"goToHome", "class":["btn-light", "btn"]}, {"text":"회원가입 하기", "action":"goToSignUp", "class":["btn-dark", "btn"]}]', opened="false"></popup-component>
 
     <!--팝업창-->
     <div class="overlay" id="overlay">
@@ -73,7 +73,7 @@
             <input type="range" id="slider" min="0" max="100" value="0" style="width: 100%; margin-top: 12px;">
 
             <div class="d-grid gap-2">
-                <button id="closePopup" class="btn btn-primary bottomButton" type="button" style="margin-top: 12px;">00분 00초의 설명 보기</button>
+                <button id="closePopup" class="btn btn-dark bottomButton" type="button" style="margin-top: 12px;">00분 00초의 설명 보기</button>
             </div>
 
         </div>

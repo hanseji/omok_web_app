@@ -1,5 +1,5 @@
-const CACHE_STATIC_NAME = "static-v1.1.4"; //1은 하면 안 됨, 이미 해버림
-const CACHE_DYNAMIC_NAME = "dynamic-v1.1.4";
+const CACHE_STATIC_NAME = "static-v1.2"; //1은 하면 안 됨, 이미 해버림
+const CACHE_DYNAMIC_NAME = "dynamic-v1.2";
 
 const immutableRequests = [
     "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css",
